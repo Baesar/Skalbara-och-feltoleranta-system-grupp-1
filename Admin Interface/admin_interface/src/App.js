@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import BoxBasic from './component/mybox';
 
 function App() {
   return (
+    
     <div className="App">
       {/* Background Music */}
+      <BoxBasic></BoxBasic>
       <audio autoPlay loop>
         <source src="for-elevator-music-jazz-236106.mp3" type="audio/mp3" />
       </audio>
