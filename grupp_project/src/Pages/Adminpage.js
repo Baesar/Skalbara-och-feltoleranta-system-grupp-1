@@ -1,12 +1,12 @@
 import React from "react";
+import BoxBasic from "../Components/BoxBasic";
 
 const Adminpage = () => 
 {
     return(
-        <div>
-            <p>
-                THIS IS ADMIN: GET OUT
-            </p>
+        <div className = "Admin">
+            <BoxBasic/>
+            
         </div>
     )
 
