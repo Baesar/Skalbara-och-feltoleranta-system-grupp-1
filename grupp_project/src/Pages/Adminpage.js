@@ -1,12 +1,14 @@
 import React from "react";
-import BoxBasic from "../Components/BoxBasic";
 
+//import './Components/WebsiteStyle.css';
 const Adminpage = () => 
 {
     return(
         <div className = "Admin">
-            <BoxBasic/>
-            
+            <p>Welcome to admin interface</p>
+            <form>
+                
+            </form>            
         </div>
     )
 
