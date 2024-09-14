@@ -7,14 +7,24 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul>
         <li>
-        <NavLink to="/Home" activeClassName="active">
-        Home
-        </NavLink>
+          <NavLink to="/Home" activeClassName="active">
+            Home
+          </NavLink>
         </li>
         <li>
-        <NavLink to="/Admin" activeClassName="active">
-        Admin
-        </NavLink>      
+          <NavLink to="/Admin" activeClassName="active">
+            Admin
+          </NavLink>      
+        </li>
+        <li>
+          <NavLink to="/SignIn" activeClassName="active">
+            SignIn
+          </NavLink>      
+        </li>
+        <li>
+          <NavLink to="/SignUp" activeClassName="active">
+            SignUp
+          </NavLink>      
         </li>
       </ul>
     </div>
