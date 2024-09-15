@@ -13,7 +13,7 @@
   /* Heading styles */
   .confirmation-container h2 {
     margin-bottom: 20px;
-    color: #007bff; /* Vibrant color for emphasis */
+    color: #4e8888; /* Vibrant color for emphasis */
     font-size: 28px; /* Larger font size for impact */
     animation: slideInFromTop 0.6s ease-out; /* Slide-in effect */
   }
@@ -29,7 +29,7 @@
   
   /* Link styles */
   .confirmation-container a {
-    color: #007bff; /* Vibrant link color */
+    color: #7993ce; /* Vibrant link color */
     text-decoration: none;
     font-weight: bold; /* Make links stand out */
     transition: color 0.3s ease, transform 0.2s ease; /* Smooth color and transform transitions */
@@ -37,7 +37,7 @@
   
   .confirmation-container a:hover {
     text-decoration: underline;
-    color: #0056b3; /* Darker shade for hover effect */
+    color: #80a7d1; /* Darker shade for hover effect */
     transform: scale(1.05); /* Slight scale-up effect on hover */
   }
   
