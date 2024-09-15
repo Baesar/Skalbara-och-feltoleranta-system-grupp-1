@@ -45,11 +45,11 @@ form {
 }
 
 .appointments-list li:hover {
-    background-color: #af36ca; /* Light grey background on hover */
+    background-color: #7999ca; /* Light grey background on hover */
 }
 
 /* Style for selected time */
 .appointments-list li.selected {
-    background-color: #7e456c;
+    background-color: #8286e2;
     color: white;
 }

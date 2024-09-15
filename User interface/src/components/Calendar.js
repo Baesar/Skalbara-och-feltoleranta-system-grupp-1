@@ -8,11 +8,19 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   const [date, setDate] = useState(null); // Start with no date selected
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
-
+  
   const handleDateChange = (newDate) => {
     setDate(newDate);
     setSelectedTime(''); // Reset the selected time when a new date is chosen
-    setAvailableTimes(['10:00 AM', '11:00 AM', '01:00 PM', '03:00 PM']); // Set available times
+    
+    // Set available times with time ranges (start time - end time)
+    setAvailableTimes([
+      '10:00 - 11:00 AM',
+      '11:00 - 12:00 PM',
+      '01:00 - 02:00 PM',
+      '03:00 - 04:00 PM'
+    ]);
+  
     onDateSelect(newDate); // Pass selected date up to parent component
   };
 
