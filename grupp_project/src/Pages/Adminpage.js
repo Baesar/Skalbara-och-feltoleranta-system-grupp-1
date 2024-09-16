@@ -1,4 +1,7 @@
 import React from "react";
+//////// using Admin components
+import Admin_append_form from "../Components/forms/form_admin";
+
 
 //import './Components/WebsiteStyle.css';
 const Adminpage = () => 
@@ -13,13 +16,13 @@ const Adminpage = () =>
                 then their id, name , email , password to the account , age ect
                 finally the tier of access for buildings. should be able to det from no access (cant do anything)
                 to level 1 (entry access) 2(room access) , 3 (utlities access ) and finally 4 is medicine/hazard access*/}
-
-                <label></label>
+                <Admin_append_form></Admin_append_form>
                 <select id="role" name="role" required>
                     <option value="patient">Patient</option>
                     <option value="member">Member</option>
-                    <option value="staff">Staff</option>
+                      <option value="staff">Staff</option>
                 </select>
+                
                 <br></br>
             </form>            
         </div>

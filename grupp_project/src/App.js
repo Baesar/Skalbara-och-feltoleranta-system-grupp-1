@@ -7,7 +7,7 @@ import Adminpage from './Pages/Adminpage';
 import Testing_ground from './Pages/Testing_ground';
 ///here we import components 
 import Sidebar from './Components/Sidebar';
-
+import './Components/WebsiteStyle.css';
 ////////////////
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
