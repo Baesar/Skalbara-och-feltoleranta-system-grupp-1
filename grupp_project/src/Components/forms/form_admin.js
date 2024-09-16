@@ -1,8 +1,12 @@
 import React from 'react';
-import { Select } from '@mui/base/Select';
-import { Option } from '@mui/base/Option';
 
 
-export default function Select_form () {
+{/**This form is for ading people to the database for them to be able to log in or be observed. */}
+export default function Admin_append_form () {
 
+    <select id="role" name="role" required>
+            <option value="patient">Patient</option>
+            <option value="member">Member</option>
+            <option value="staff">Staff</option>
+        </select>
 }
