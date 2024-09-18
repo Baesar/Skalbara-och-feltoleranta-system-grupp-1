@@ -1,11 +1,9 @@
-
-import './App.css';
 import './Components/WebsiteStyle.css';
-/// here we import pages
+/// here we import pages (view)
 import Homepage from './Pages/Homepage';
 import Adminpage from './Pages/Adminpage';
 import Testing_ground from './Pages/Testing_ground';
-///here we import components 
+///here we import components (model)
 import Sidebar from './Components/Sidebar';
 
 ////////////////
