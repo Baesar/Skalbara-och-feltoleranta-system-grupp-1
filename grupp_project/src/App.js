@@ -12,6 +12,8 @@ import Sidebar from './Components/Sidebar';
 ////////////////
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Userpage from './Pages/Userpage';
+import Confirmation from './Components/Confirmation';
+
 =======
 import './Components/WebsiteStyle.css';
 /// here we import pages (view)
