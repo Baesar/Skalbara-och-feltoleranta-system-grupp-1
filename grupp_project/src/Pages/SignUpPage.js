@@ -14,7 +14,7 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import getSignUpTheme from '../Components/theme/getSignUpTheme';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from '../Components/CostumIcons';
+import { GoogleIcon, FacebookIcon, GetBetterIcon } from '../Components/CostumIcons';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -135,7 +135,7 @@ export default function SignUp() {
           }}
         >
           <Card variant="outlined">
-            <SitemarkIcon /> {/* SITEMARK THING. CHANGE IT :3 */}
+            <GetBetterIcon /> {/* SITEMARK THING. CHANGE IT :3 */}
             <Typography
               component="h1"
               variant="h4"
