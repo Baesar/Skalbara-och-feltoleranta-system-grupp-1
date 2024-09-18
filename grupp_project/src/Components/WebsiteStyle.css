@@ -1,0 +1,11 @@
+/*This is the css file used uniformly
+in the entire website to increase 
+resuability and cohesion
+ */
+
+ .mybox
+ {
+    padding: 16px; 
+    border: 2px solid black;
+    text-align: center;  
+ }

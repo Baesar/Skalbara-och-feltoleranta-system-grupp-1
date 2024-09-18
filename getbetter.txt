@@ -1,0 +1,21 @@
+Project name : GetBetter Website
+
+Short description : An event scheduling web application aimed at therapy , psychiatric meetings and youth mental health groups and rehabilitation group meetings . These have the following roles and events 
+ ## Roles and features for each roles .
+
+* Admins : They create staff roles and give them clearance accesses to resources, rooms and halls for equipment . 
+
+* Staff : Can vary from all sorts of mental health experts, cleaning staff or security . Each have their own security clearance , ability to access areas and resources for events . it should also show a separate schedule for staff .
+
+* Patients : Those admitted based on law rulings or by family members. View but cant change scheduling   .
+
+* Members : Those who come on their own choosing . These people.  View and able to change schedualing .
+
+* Managers : Those who book patients for meetings and if the schedual allows it making events for staff to come to . Events can be either only for members or they can be public events that are advertised on the website for those who want to join can join without any 
+logging in . Access to also being able to add/delete new staff/patients/members and alter any schedules .
+
+Resources the groups will have access to 
+
+Districts : Referring to parts of a building or buildings . Depending on district the ability of access should be restricted . 
+* Rooms : for having events and meetings 
+* Resource rooms : Can be medical or physical equipment for any need 
