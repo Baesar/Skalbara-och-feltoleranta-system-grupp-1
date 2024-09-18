@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import CalendarComponent from '../components/Calendar';
 import AppointmentForm from '../components/AppointmentForm';
 
-function Home() {
+function Userpage() {
   // State for selected date, initially set to null
   const [selectedDate, setSelectedDate] = useState(null);
   // State for selected time, initially set to null
@@ -50,4 +50,4 @@ function Home() {
 }
 
 // Export the Home component as the default export
-export default Home;
+export default Userpage;
