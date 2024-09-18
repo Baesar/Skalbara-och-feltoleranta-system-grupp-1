@@ -8,8 +8,6 @@ resuability and cohesion
     padding: 16px; 
     border: 2px solid black;
     text-align: center;  
-<<<<<<< HEAD
-=======
  }
  .Sidebar {
    position: fixed;
@@ -21,5 +19,4 @@ resuability and cohesion
    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
    height: 150px; /* Height of the sidebar */
    z-index: 1000; /* Ensure the sidebar stays on top */
->>>>>>> 8c10174e720d589d8b741890b7f8c19f580b849e
  }
