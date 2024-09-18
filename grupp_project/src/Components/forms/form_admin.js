@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useState } from 'react';
 import { TextField, Button, Select, MenuItem, FormControl, InputLabel, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 //This is the form that makes it possible to comminucate to a server
@@ -217,17 +217,3 @@ const AdminForm = () => {
 };
 
 export default AdminForm;
-=======
-import React from 'react';
-
-
-{/**This form is for ading people to the database for them to be able to log in or be observed. */}
-export default function Admin_append_form () {
-
-    <select id="role" name="role" required>
-            <option value="patient">Patient</option>
-            <option value="member">Member</option>
-            <option value="staff">Staff</option>
-        </select>
-}
->>>>>>> Ash_branch
