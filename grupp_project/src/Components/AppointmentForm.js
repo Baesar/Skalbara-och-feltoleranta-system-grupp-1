@@ -1,7 +1,7 @@
 // Import necessary dependencies from React and PropTypes
 import React, { useState } from 'react'; 
 import PropTypes from 'prop-types';  // For type-checking the props
-import './AppointmentForm.css';  // Import the corresponding CSS file for styling
+//import './AppointmentForm.css';  // Import the corresponding CSS file for styling
 
 // Define the AppointmentForm component
 const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // Import the default Calendar CSS
-import './Calendar.css'; // Import custom styles
+//import 'react-calendar/dist/Calendar.css'; // Import the default Calendar CSS
+//import './Calendar.css'; // Import custom styles
 
 const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   const [date, setDate] = useState(null); // Start with no date selected
