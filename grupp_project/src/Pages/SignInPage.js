@@ -112,7 +112,7 @@ export default function SignIn(props) {
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
-          <SitemarkIcon />
+          <SitemarkIcon /> {/* SITEMARK THING. CHANGE IT :3 */}
           <Typography
             component="h1"
             variant="h4"
