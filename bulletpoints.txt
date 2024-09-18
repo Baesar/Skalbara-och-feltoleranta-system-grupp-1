@@ -10,4 +10,6 @@ npm install webpack webpack-cli --save-dev
 npm install --save-dev @babel/preset-react
 npm install express --save
 
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
 ###These are required to download
