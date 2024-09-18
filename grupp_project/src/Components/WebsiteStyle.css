@@ -8,4 +8,18 @@ resuability and cohesion
     padding: 16px; 
     border: 2px solid black;
     text-align: center;  
+<<<<<<< HEAD
+=======
+ }
+ .Sidebar {
+   position: fixed;
+   bottom: 0; /* Stick to the bottom of the viewport */
+   left: 0; /* Stick to the left side (or right if you prefer) */
+   width: 200px; /* Adjust the width of your sidebar */
+   background-color: #f0f0f0;
+   padding: 20px;
+   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+   height: 150px; /* Height of the sidebar */
+   z-index: 1000; /* Ensure the sidebar stays on top */
+>>>>>>> 8c10174e720d589d8b741890b7f8c19f580b849e
  }
