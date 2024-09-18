@@ -1,6 +1,7 @@
 import React from "react";
 import AdminForm from "../Components/forms/form_admin";
 //import './Components/WebsiteStyle.css';
+///
 const Adminpage = () => 
 {
     return(
