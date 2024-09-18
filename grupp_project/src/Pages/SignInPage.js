@@ -15,7 +15,7 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import ForgotPassword from '../Components/ForgotPassword';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from '../Components/CostumIcons';
+import { GoogleIcon, FacebookIcon, GetBetterIcon } from '../Components/CostumIcons';
 import AppTheme from '../shared-theme/AppTheme';
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -112,7 +112,7 @@ export default function SignIn(props) {
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
-          <SitemarkIcon /> {/* SITEMARK THING. CHANGE IT :3 */}
+          <GetBetterIcon/> {/* SITEMARK THING. CHANGE IT :3 */}
           <Typography
             component="h1"
             variant="h4"
