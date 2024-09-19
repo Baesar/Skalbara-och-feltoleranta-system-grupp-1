@@ -4,6 +4,9 @@ import './Components/WebsiteStyle.css';
 import Homepage from './Pages/Homepage';
 import Adminpage from './Pages/Adminpage';
 import Testing_ground from './Pages/Testing_ground';
+import SignInPage from './Pages/SignInPage';
+import SignUpPage from './Pages/SignUpPage';
+
 ///here we import components 
 import Sidebar from './Components/Sidebar';
 
@@ -23,6 +26,7 @@ function App() {
             <Routes>
               <Route path = "/" element={<Homepage/>}/>
               <Route path = "/Home" element={<Homepage/>}/>
+<<<<<<< HEAD
               <Route path = "/Admin" element={<Adminpage/>}/> 
               <Route path = "/Testing_ground" element={<Testing_ground/>}/> 
               <Route path="/User" element={<Userpage />} />
@@ -30,8 +34,13 @@ function App() {
 
             </Routes>
         <Sidebar/>
+=======
+              <Route path = "/Admin" element={<Adminpage/>}/>
+              <Route path = "/SignIn" element={<SignInPage/>}/>
+              <Route path = "/SignUp" element={<SignUpPage/>}/> 
+            </Routes>
+>>>>>>> Julius
           </div>
-        
       </div>
     </Router>
   );

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Import necessary dependencies from React and PropTypes
 import React, { useState } from 'react'; 
 import PropTypes from 'prop-types';  // For type-checking the props
@@ -14,10 +15,22 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
     
     // Invoke the onBookAppointment function passed in as a prop
     // Pass the appointment details, selected date, and selected time as an object
+=======
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './AppointmentForm.css'; // Import custom styles
+
+const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
+  const [details, setDetails] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+>>>>>>> Julius
     onBookAppointment({ details, date: selectedDate, time: selectedTime });
   };
 
   return (
+<<<<<<< HEAD
     // Form for booking an appointment, the onSubmit event is linked to the handleSubmit function
     <form onSubmit={handleSubmit}>
       <h2>Book Appointment</h2>
@@ -37,11 +50,26 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
       </label>
 
       {/* Submit button for booking the appointment */}
+=======
+    <form onSubmit={handleSubmit}>
+      <h2>Book Appointment</h2>
+      <p>Date: {selectedDate.toDateString()}</p>
+      <p>Time: {selectedTime}</p>
+      <label>
+        Details:
+        <textarea
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+          required
+        />
+      </label>
+>>>>>>> Julius
       <button type="submit">Book Appointment</button>
     </form>
   );
 };
 
+<<<<<<< HEAD
 // Prop types ensure the correct data types are passed to the component
 AppointmentForm.propTypes = {
   selectedDate: PropTypes.instanceOf(Date).isRequired,  // Ensure selectedDate is a Date object
@@ -51,3 +79,14 @@ AppointmentForm.propTypes = {
 
 // Export the component for use in other parts of the application
 export default AppointmentForm;
+=======
+// Define prop types for the component
+AppointmentForm.propTypes = {
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  selectedTime: PropTypes.string.isRequired,
+  onBookAppointment: PropTypes.func.isRequired
+};
+
+export default AppointmentForm;
+
+>>>>>>> Julius
