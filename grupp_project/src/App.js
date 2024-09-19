@@ -3,7 +3,7 @@ import './Components/WebsiteStyle.css';
 /// here we import pages
 import Homepage from './Pages/Homepage';
 import Adminpage from './Pages/Adminpage';
-import Testing_ground from './Pages/Testing_ground';
+import TestingGround from './Pages/TestingGround';
 import SignInPage from './Pages/SignInPage';
 import SignUpPage from './Pages/SignUpPage';
 
@@ -26,20 +26,14 @@ function App() {
             <Routes>
               <Route path = "/" element={<Homepage/>}/>
               <Route path = "/Home" element={<Homepage/>}/>
-<<<<<<< HEAD
               <Route path = "/Admin" element={<Adminpage/>}/> 
-              <Route path = "/Testing_ground" element={<Testing_ground/>}/> 
+              <Route path = "/TestingGround" element={<TestingGround/>}/> 
               <Route path="/User" element={<Userpage />} />
               <Route path="/confirmation" element={<Confirmation />} />
-
+              <Route path = "/SignIn" element={<SignInPage/>}/>
+              <Route path = "/SignUp" element={<SignUpPage/>}/>
             </Routes>
         <Sidebar/>
-=======
-              <Route path = "/Admin" element={<Adminpage/>}/>
-              <Route path = "/SignIn" element={<SignInPage/>}/>
-              <Route path = "/SignUp" element={<SignUpPage/>}/> 
-            </Routes>
->>>>>>> Julius
           </div>
       </div>
     </Router>
