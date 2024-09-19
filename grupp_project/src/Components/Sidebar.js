@@ -22,6 +22,11 @@ const Sidebar = () => {
               Testing ground here
             </NavLink>
         </li>
+        <li>
+          <NavLink to="/User" activeClassName="active">
+            User
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
