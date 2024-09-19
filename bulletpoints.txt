@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+npm install @mui/material @emotion/react @emotion/styled
+npm install react-router-dom # always need this!
+###These are required to download
+
+npm install localforage match-sorter sort-by # only for this tutorial.
+npm run dev
+
+npm install browserify-zlib
+=======
 ###These are required to download
 
 npm install @mui/material @emotion/react @emotion/styled
@@ -11,3 +21,4 @@ npm install --save-dev @babel/preset-react
 npm install express --save
 
 ###These are required to download
+>>>>>>> 8c10174e720d589d8b741890b7f8c19f580b849e
