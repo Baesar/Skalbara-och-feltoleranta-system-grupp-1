@@ -1,13 +1,16 @@
+import './App.css';
 import './Components/WebsiteStyle.css';
-/// here we import pages (view)
+/// here we import pages
 import Homepage from './Pages/Homepage';
 import Adminpage from './Pages/Adminpage';
 import Testing_ground from './Pages/Testing_ground';
-///here we import components (model)
+///here we import components 
 import Sidebar from './Components/Sidebar';
-import './Components/WebsiteStyle.css';
+
 ////////////////
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Userpage from './Pages/Userpage';
+import Confirmation from './Components/Confirmation';
 
 
 ///
@@ -22,6 +25,9 @@ function App() {
               <Route path = "/Home" element={<Homepage/>}/>
               <Route path = "/Admin" element={<Adminpage/>}/> 
               <Route path = "/Testing_ground" element={<Testing_ground/>}/> 
+              <Route path="/User" element={<Userpage />} />
+              <Route path="/confirmation" element={<Confirmation />} />
+
             </Routes>
         <Sidebar/>
           </div>
