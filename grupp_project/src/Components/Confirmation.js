@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
-//import './Confirmation.css'; // Import custom styles if needed
+import './Confirmation.css'; // Import custom styles if needed
 
 const Confirmation = () => {
   const location = useLocation(); // Use to access state passed from navigation

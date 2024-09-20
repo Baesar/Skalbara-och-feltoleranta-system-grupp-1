@@ -1,0 +1,55 @@
+/* Appointment Form Styles */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Appointments list styles */
+.appointments-list {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    z-index: 1; /* Ensure it's above other elements */
+}
+
+/* Appointments list heading */
+.appointments-list h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333; /* Darker color for better readability */
+}
+
+/* Appointments list items */
+.appointments-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.appointments-list li {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners for list items */
+}
+
+.appointments-list li:hover {
+    background-color: #7999ca; /* Light grey background on hover */
+}
+
+/* Style for selected time */
+.appointments-list li.selected {
+    background-color: #8286e2;
+    color: white;
+}
