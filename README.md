@@ -8,7 +8,7 @@ Darina Larsen<br>
 Rama Muharam
 
 
-Tutorial :
+## Tutorial :
 
 step 1 : Step into the project folder called grupp_project using a command promt . Make sure you have installed node.js before this . 
 
