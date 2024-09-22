@@ -1,7 +1,7 @@
 
 # Webbutveckling-Grupp-2
 
-Participants:<br>
+### Participants:<br>
 Ahmed Hussein<br>
 Julius Norén<br>
 Darina Larsen<br>
