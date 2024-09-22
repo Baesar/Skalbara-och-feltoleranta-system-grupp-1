@@ -1,12 +1,14 @@
 
 ###These are required to download
 npm install 
+
 npm install @mui/material @emotion/react @emotion/styled
-npm install react-router-dom # always need this!
+npm install react-router-dom ##always need this!
 
 npm init @eslint/config@latest ##eslint 
-npm install localforage match-sorter sort-by # only for this tutorial.
+npm install localforage match-sorter sort-by ##only for this tutorial.
 
 npm install webpack webpack-cli --save-dev
 npm install --save-dev @babel/preset-react
+
 npm install express --save
