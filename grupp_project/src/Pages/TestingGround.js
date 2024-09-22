@@ -1,7 +1,7 @@
 import React from 'react'
 import BoxBasic from "../Components/boxes/BoxBasic";
 import BoxSystemProps from "../Components/boxes/BoxSystemProps";
-const Testing_ground = () => {
+const TestingGround = () => {
     return(
         <div>
             <BoxBasic content = "hello this is admin page" />
@@ -11,4 +11,4 @@ const Testing_ground = () => {
         </div>
     )
 }
-export default Testing_ground;
+export default TestingGround;
