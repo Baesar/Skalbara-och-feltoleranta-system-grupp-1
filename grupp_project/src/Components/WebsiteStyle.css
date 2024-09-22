@@ -3,12 +3,124 @@ in the entire website to increase
 resuability and cohesion
  */
 
+ 
+form {
+   width: 100%;
+   font-size:large;
+   text-align: right;
+   margin-top: 10px;
+}
+
+img {
+   width: 50px;
+   border-radius: 1px;
+}
+
+form {
+   padding: 2px;
+   font-size: 15px;
+   border-radius: 5px;
+}
+
+.navbar a {
+   float: left;
+   display: block;
+   text-align: center;
+   font-weight: 700;
+   padding: 15px;
+   color: #000201;
+   text-decoration: none;
+   font-size: 17px;
+ }
+ 
+ /* Navbar links on mouse-over */
+ .navbar a:hover {
+   background-color: #8fe27f;
+ }
+
+ #search-bar  {
+   float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+ } 
+
+ .navbar {
+   overflow: hidden;
+   background-color: #3d7360;
+ }
+ 
+ /* Current/active navbar link */
+ .active {
+   background-color: #8fe27f;
+ }
+
+
+ h1 {
+   font-family: Georgia, Times, serif;
+   font-size: 3rem;
+   padding: 20px;
+   color: #228a48;
+   margin-bottom: 10px;
+   text-align: center;  
+   margin-left: 18%;
+   background-repeat: no-repeat; 
+   height: 5vh;
+ }
+
+ h2 {
+   font-family: Georgia, Times, serif;
+   font-size: 2rem;
+   padding: 20px;
+   color: #228a48;
+   text-decoration: underline;
+   margin-bottom: 10px;
+   text-align: left;  
+ }
+
+ p {
+   font-family: Georgia, Times, serif;
+   font-size: 1.5rem;
+   font-weight: 500;
+   padding: 20px;
+   color: #000000;
+   background-color: #d8e3df;
+   margin-bottom: 10px;
+   text-align: left;  
+ }
+
+
+ footer {
+   font-family: Georgia, Times, serif;
+   text-align: center;  
+   font-size: 0.1rem;
+   padding: 1px 0;    
+   position: fixed;     
+   width: 100%;         
+   bottom: 0;        
+}
+
  .mybox
  {
     padding: 16px; 
     border: 2px solid black;
     text-align: center;  
  }
+<<<<<<< HEAD
+ body {
+   background-image: url('../Images/white_abstract.jpg');
+ }
+
+ .side-image {
+   width: 400px;
+   height: auto;
+   float: right;
+   margin-bottom: 10px;
+   margin-right: 1%
+
+=======
  .Sidebar {
    position: fixed;
    bottom: 0; /* Stick to the bottom of the viewport */
@@ -19,4 +131,5 @@ resuability and cohesion
    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
    height: 150px; /* Height of the sidebar */
    z-index: 1000; /* Ensure the sidebar stays on top */
+>>>>>>> main
  }
