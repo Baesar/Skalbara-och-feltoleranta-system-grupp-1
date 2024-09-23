@@ -9,7 +9,7 @@ const Homepage = () => {
     <div>
       <header>
         <div className="logo">
-          <img src={logo} style={{ height: '30px' }} alt="Logo" />
+          <img src="../Images/logo.png" style={{ height: '45px' }} alt="Logo" />
         </div>
 
         <nav className="navbar background">
