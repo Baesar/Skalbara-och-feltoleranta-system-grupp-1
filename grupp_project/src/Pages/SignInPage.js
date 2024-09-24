@@ -56,6 +56,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
+// The SignIn page for accessing your account
 export default function SignIn(props) {
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
@@ -165,7 +166,7 @@ export default function SignIn(props) {
                 error={passwordError}
                 helperText={passwordErrorMessage}
                 name="password"
-                placeholder="••••••"
+                placeholder="••••••••••"
                 type="password"
                 id="password"
                 autoComplete="current-password"
