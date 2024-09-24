@@ -47,6 +47,7 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
   }),
 }));
 
+// The SignUp page for creating your account
 export default function SignUp() {
   const [mode, setMode] = React.useState('light');
   const [showCustomTheme] = React.useState(true);
@@ -183,7 +184,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  placeholder="••••••"
+                  placeholder="••••••••••"
                   type="password"
                   id="password"
                   autoComplete="new-password"
