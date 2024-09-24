@@ -4,9 +4,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 export function GetBetterIcon() {
   return (
     <div>
-      <img src="/images/getbetter_logo.png" alt="GetBetter Logo" width="50px" margin="10px"/>
-
-      &nbsp;&nbsp;<b>Get Better</b>
+      <img src="/Images/logo.png" alt="GetBetter Logo" width="50px" margin="10px"/>
     </div>
   );
 }
