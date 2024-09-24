@@ -1,7 +1,6 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
 
-import logo from '../Images/logo.png';  // Adjust this path to your logo file
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
 
 const Homepage = () => {
