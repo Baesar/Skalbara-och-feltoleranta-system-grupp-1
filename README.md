@@ -1,13 +1,14 @@
 
 # Webbutveckling-Grupp-2
 
-Participants : 
-Ahmed Hussein
-Julius Norén
-Darina Larsen :)
+### Participants:<br>
+Ahmed Hussein<br>
+Julius Norén<br>
+Darina Larsen<br>
 Rama Muharam
 
-Tutorial :
+
+## Tutorial :
 
 step 1 : Step into the project folder called grupp_project using a command promt . Make sure you have installed node.js before this . 
 
