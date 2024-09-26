@@ -22,7 +22,7 @@ const Homepage = () => {
         </nav>
 
         <div className="content">
-          <img src={therapySessionImage}  className="side-image" />
+          <img src={therapySessionImage} alt="okej" className="side-image" />
           <h1>Welcome to GetBetter!</h1>
         </div>
       </header>
