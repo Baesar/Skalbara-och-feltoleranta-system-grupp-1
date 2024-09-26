@@ -1,10 +1,12 @@
 import * as React from 'react';
 import SvgIcon from '@mui/material/SvgIcon';
+import getBetterLogo from '../Images/logo.png'; // Import the image
+
 
 export function GetBetterIcon() {
   return (
     <div>
-      <img src="/images/getbetter_logo.png" alt="GetBetter Logo" width="50px" margin="10px"/>
+      <img src= {getBetterLogo} alt="GetBetter Logo" width="50px" margin="10px"/>
 
       &nbsp;&nbsp;<b>Get Better</b>
     </div>
