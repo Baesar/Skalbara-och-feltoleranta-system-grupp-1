@@ -11,7 +11,8 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
   // Event handler for form submission
   const handleSubmit = (e) => {
     e.preventDefault();  // Prevent the default form submission behavior (e.g., page refresh)
-    
+    const appointmentData = { details, date: selectedDate, time: selectedTime };
+    console.log('Appointment Data:', appointmentData);
     // Invoke the onBookAppointment function passed in as a prop
     // Pass the appointment details, selected date, and selected time as an object
     onBookAppointment({ details, date: selectedDate, time: selectedTime });
