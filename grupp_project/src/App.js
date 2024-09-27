@@ -8,10 +8,12 @@ import SignInPage from './Pages/SignInPage';
 import SignUpPage from './Pages/SignUpPage';
 
 ///here we import components 
-
+import Sidebar from './Components/Sidebar';
 ///here we import components (model)
 
-import Sidebar from './Components/Sidebar';
+/// here we import functions to be used from controller 
+import * as DatabaseConnect from './Controller methods/DatabaseConnect' ;
+
 
 ////////////////
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
