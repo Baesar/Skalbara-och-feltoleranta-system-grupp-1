@@ -30,9 +30,7 @@ function App() {
               <Route path = "/" element={<Homepage/>}/>
               <Route path = "/Home" element={<Homepage/>}/>
               <Route path = "/Admin" element={<Adminpage/>}/> 
-
               <Route path = "/TestingGround" element={<TestingGround/>}/> 
-
               <Route path="/User" element={<Userpage />} />
               <Route path="/confirmation" element={<Confirmation />} />
               <Route path = "/SignIn" element={<SignInPage/>}/>
