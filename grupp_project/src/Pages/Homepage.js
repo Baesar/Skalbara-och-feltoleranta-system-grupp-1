@@ -1,28 +1,28 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
 
-import logo from '../Images/logo.png';  // Adjust this path to your logo file
+
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
 
 const Homepage = () => {
   return (
     <div>
       <header>
-        <div className="logo">
-          <img src={logo} style={{ height: '30px' }} alt="Logo" />
+        <div>
+          <img src="../Images/logo.png" style={{ height: '45px' }} alt="Logo" />
         </div>
 
         <nav className="navbar background">
           <div className="navbar">
-            <a className="active" href="#"><i className="home"></i> Home</a>
-            <a href="#"><i className="envelope"></i> Contact</a>
-            <a href="#"><i className="user"></i> Login</a>
+            <a className="active" href="https://www.youtube.com/@DailyDoseOfInternet"><i className="home"></i> Home</a>
+            <a href="https://www.youtube.com/@DailyDoseOfInternet"><i className="envelope"></i> Contact</a>
+            <a href="https://www.youtube.com/@DailyDoseOfInternet"><i className="user"></i> Login</a>
             <input type="text" id="search-bar" name="search" placeholder="Search..." />
           </div>
         </nav>
 
         <div className="content">
-          <img src={therapySessionImage} alt="Side Picture" className="side-image" />
+          <img src={therapySessionImage} alt="okej" className="side-image" />
           <h1>Welcome to GetBetter!</h1>
         </div>
       </header>
@@ -52,9 +52,9 @@ const Homepage = () => {
         </p>
       </section>
 
-      <footer>
+      
         <p>© 2024 GetBetter. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 };
