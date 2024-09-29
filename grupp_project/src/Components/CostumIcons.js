@@ -1,5 +1,7 @@
 import * as React from 'react';
 import SvgIcon from '@mui/material/SvgIcon';
+import getBetterLogo from '../Images/logo.png'; // Import the image
+
 
 export function GetBetterIcon() {
   return (
