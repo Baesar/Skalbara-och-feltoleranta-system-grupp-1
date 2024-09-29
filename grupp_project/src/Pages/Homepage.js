@@ -1,10 +1,7 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5cd3a097a568fe29af52d136119d149771f54946
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
 
 const Homepage = () => {
