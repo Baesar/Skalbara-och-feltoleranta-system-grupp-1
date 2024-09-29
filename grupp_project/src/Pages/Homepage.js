@@ -1,6 +1,10 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5cd3a097a568fe29af52d136119d149771f54946
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
 
 const Homepage = () => {
@@ -21,7 +25,7 @@ const Homepage = () => {
         </nav>
 
         <div className="content">
-          <img src={therapySessionImage}  className="side-image" />
+          <img src={therapySessionImage} alt="okej" className="side-image" />
           <h1>Welcome to GetBetter!</h1>
         </div>
       </header>
@@ -51,9 +55,9 @@ const Homepage = () => {
         </p>
       </section>
 
-      <footer>
+      
         <p>© 2024 GetBetter. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 };
