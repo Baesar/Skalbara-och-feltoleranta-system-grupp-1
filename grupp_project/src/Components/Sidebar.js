@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './WebsiteStyle.css'
 //import './Sidebar.css'; // Optional for styling
 // here is were we using a unlisted list in the sideBar put up all the links
 const Sidebar = () => {
@@ -20,6 +21,21 @@ const Sidebar = () => {
             <NavLink to="/Testing" activeClassName = "active">
               Testing ground here
             </NavLink>
+        </li>
+        <li>
+          <NavLink to="/User" activeClassName="active">
+            User
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/SignIn" activeClassName="active">
+            SignIn
+          </NavLink>      
+        </li>
+        <li>
+          <NavLink to="/SignUp" activeClassName="active">
+            SignUp
+          </NavLink>     
         </li>
       </ul>
     </div>
