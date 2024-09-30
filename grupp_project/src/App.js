@@ -9,10 +9,11 @@ import SignUpPage from './Pages/SignUpPage';
 
 ///here we import components 
 import Sidebar from './Components/Sidebar';
+import addPerson from './Components/Testconnetct';
 ///here we import components (model)
 
 /// here we import functions to be used from controller 
-import * as DatabaseConnect from './Controller methods/DatabaseConnect' ;
+
 
 
 ////////////////
