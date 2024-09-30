@@ -12,4 +12,5 @@ npm install webpack webpack-cli --save-dev
 npm install --save-dev @babel/preset-react
 
 npm install express --save
-npm install mongodb@6.9
+npm install mongodb ##for the database
+npm install mongoose
