@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-const bookingRoutes = require('./routes/bookings')
+const bookingRoutes = require('./routes/bookings.js')
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.use('/api/bookings', bookingRoutes)
+//app.use('/api/bookings', bookingRoutes)
 app.get("/api", (req, res) => {
     res.json({ "users": ["userOne", "userTwo", "userThree", "userFour"] })
 })
