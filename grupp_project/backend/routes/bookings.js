@@ -1,30 +1,28 @@
 const express = require('express')
+const {
+    createBooking,
+    getBookings,
+    getBooking,
+    deleteBooking,
+    updateBooking
+} = require('../controllers/bookingController')
+
 
 const router = express.Router();
 
 // GET all bookings
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all bookings'})
-});
+router.get('/', getBookings);
 
 // GET a single booking
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single booking'})
-})
+router.get('/:id', getBooking)
 
 // POST a new booking
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a single booking'})
-})
+router.post('/', createBooking)
 
 // DELETE a booking
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a booking'})
-})
+router.delete('/:id', deleteBooking)
 
 // PATCH a booking
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'PATCH a booking'})
-})
+router.patch('/:id', updateBooking)
 
 module.exports = router;
