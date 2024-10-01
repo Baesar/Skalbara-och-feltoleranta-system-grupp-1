@@ -1,8 +1,6 @@
 import Button from '@mui/material/Button';
 
 function BookingViewForStaff({ selectedDate, selectedTime, onRemoveBooking }) {
-
-
     return ( 
         <div>
             Booking for {selectedDate.toDateString()} {selectedTime}
