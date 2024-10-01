@@ -9,17 +9,17 @@ const client = new MongoClient(uri, {
     },
 });
 
-try {
+// try {
     
-    await client.connect();
+//     await client.connect();
 
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-        "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-} catch(err) {
-    console.log(err);
-}
+//     await client.db("admin").command({ ping: 1 });
+//     console.log(
+//         "Pinged your deployment. You successfully connected to MongoDB!"
+//     );
+// } catch(err) {
+//     console.log(err);
+// }
 
 let db = client.db("employees");
 
