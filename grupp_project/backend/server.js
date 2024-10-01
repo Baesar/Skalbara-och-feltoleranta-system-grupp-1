@@ -18,10 +18,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-//app.use('/api/bookings', bookingRoutes)
-app.get("/api", (req, res) => {
-    res.json({ "users": ["userOne", "userTwo", "userThree", "userFour"] })
-})
+app.use('/api/bookings', bookingRoutes)
 
 // connect to db
 mongoose.connect(process.env.ATLAS_URI)

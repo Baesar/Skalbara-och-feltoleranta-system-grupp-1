@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './WebsiteStyle.css'
 //import './Sidebar.css'; // Optional for styling
-// here is were we using a unlisted list in the sideBar put up all the links
+
+// This is where we use an unordered list in the Sidebar to put up all the links
 const Sidebar = () => {
   return (
     <div className="sidebar">
