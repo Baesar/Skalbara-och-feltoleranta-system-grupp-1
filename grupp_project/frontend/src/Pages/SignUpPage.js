@@ -2,10 +2,7 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
@@ -14,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import getSignUpTheme from '../Components/theme/getSignUpTheme';
-import { GoogleIcon, FacebookIcon, GetBetterIcon } from '../Components/CostumIcons';
+import { GetBetterIcon } from '../Components/CostumIcons';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -47,6 +44,7 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
   }),
 }));
 
+// The SignUp page for creating your account
 export default function SignUp() {
   const [mode, setMode] = React.useState('light');
   const [showCustomTheme] = React.useState(true);
@@ -117,7 +115,7 @@ export default function SignUp() {
     const data = new FormData(event.currentTarget);
     console.log({
       name: data.get('name'),
-      lastName: data.get('lastName'),
+      //lastName: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
     });
@@ -149,14 +147,14 @@ export default function SignUp() {
               sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
             >
               <FormControl>
-                <FormLabel htmlFor="name">Full name</FormLabel>
+                <FormLabel htmlFor="name">Username</FormLabel>
                 <TextField
                   autoComplete="name"
                   name="name"
                   required
                   fullWidth
                   id="name"
-                  placeholder="Jon Snow"
+                  placeholder="username"
                   error={nameError}
                   helperText={nameErrorMessage}
                   color={nameError ? 'error' : 'primary'}
@@ -168,7 +166,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  placeholder="your@email.com"
+                  placeholder="email"
                   name="email"
                   autoComplete="email"
                   variant="outlined"
@@ -183,7 +181,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  placeholder="••••••"
+                  placeholder="password"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -193,10 +191,6 @@ export default function SignUp() {
                   color={passwordError ? 'error' : 'primary'}
                 />
               </FormControl>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive updates via email."
-              />
               <Button
                 type="submit"
                 fullWidth
@@ -223,6 +217,8 @@ export default function SignUp() {
                 </span>
               </Typography>
             </Box>
+            
+            {/*
             <Divider>
               <Typography sx={{ color: 'text.secondary' }}>or</Typography>
             </Divider>
@@ -246,6 +242,7 @@ export default function SignUp() {
                 Sign up with Facebook
               </Button>
             </Box>
+            */}
           </Card>
         </Stack>
       </SignUpContainer>
