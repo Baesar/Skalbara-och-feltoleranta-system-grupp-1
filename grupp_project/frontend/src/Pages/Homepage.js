@@ -1,7 +1,5 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
-
-
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
 
 const Homepage = () => {
@@ -38,7 +36,11 @@ const Homepage = () => {
         <h2>About Us</h2>
         <p>
           Welcome to GetBetter!<br /><br />
-          At GetBetter, we are dedicated to supporting your journey towards improved well-being. Our platform features a distinguished team of four highly skilled therapists, each specializing in key areas of expertise: trauma, couples therapy, stress management, and rehabilitation. Whether you are working through past trauma, seeking to strengthen your relationship, managing stress, or pursuing recovery, our professionals are here to provide personalized and effective support. Our mission is to facilitate your path to feeling better and achieving a balanced, fulfilling life.
+
+          At GetBetter, we are dedicated to supporting your journey towards improved well-being. Our platform features a distinguished team of four highly skilled therapists, each specializing in 
+          key areas of expertise: trauma, couples therapy, stress management, and rehabilitation. Whether you are working through past trauma, seeking to strengthen your relationship, 
+          managing stress, or pursuing recovery, our professionals are here to provide personalized and effective support. Our mission is to facilitate your path to feeling better and achieving a 
+          balanced, fulfilling life.
         </p>
       </section>
 
@@ -51,10 +53,7 @@ const Homepage = () => {
           Therapist 4 : Ash <br /><br />
         </p>
       </section>
-
-      
-        <p>© 2024 GetBetter. All rights reserved.</p>
-      
+      <p>© 2024 GetBetter. All rights reserved.</p>
     </div>
   );
 };

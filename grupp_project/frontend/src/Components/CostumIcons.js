@@ -6,9 +6,7 @@ import getBetterLogo from '../Images/logo.png'; // Import the image
 export function GetBetterIcon() {
   return (
     <div>
-      <img src= {getBetterLogo} alt="GetBetter Logo" width="50px" margin="10px"/>
-
-      &nbsp;&nbsp;<b>Get Better</b>
+      <img src="/Images/logo.png" alt="GetBetter Logo" width="50px" margin="10px"/>
     </div>
   );
 }
