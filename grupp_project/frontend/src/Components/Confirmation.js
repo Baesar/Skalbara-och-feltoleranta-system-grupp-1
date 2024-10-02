@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Confirmation.css'; // Import custom styles if needed
@@ -25,7 +26,9 @@ const Confirmation = () => {
       <p>Date: {appointment.date.toDateString()}</p>
       <p>Time: {appointment.time}</p>
       <p>Details: {appointment.details}</p>
-      <a href="/">Go Back to Calendar</a>
+      <NavLink to="/User" activeClassName="active">
+        Go Back to Calendar
+      </NavLink>
     </div>
   );
 };

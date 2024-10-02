@@ -7,15 +7,34 @@ import './AppointmentForm.css';  // Import the corresponding CSS file for stylin
 const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
   // Define a state variable 'details' with an empty string as the initial value
   const [details, setDetails] = useState('');
+  const [error, setError] = useState(null);
 
   // Event handler for form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();  // Prevent the default form submission behavior (e.g., page refresh)
-    const appointmentData = { details, date: selectedDate, time: selectedTime };
+    const appointmentData = { date: selectedDate, time: selectedTime, details };
     console.log('Appointment Data:', appointmentData);
     // Invoke the onBookAppointment function passed in as a prop
     // Pass the appointment details, selected date, and selected time as an object
-    onBookAppointment({ details, date: selectedDate, time: selectedTime });
+
+    const response = await fetch('/api/bookings/', {
+      method: 'POST',
+      body: JSON.stringify(appointmentData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
+
+    if (!response.ok) {
+      setError(json.error)
+    }
+    if (response.ok) {
+      setError(null)
+      console.log('new booking added', json)
+    }
+
+    onBookAppointment(appointmentData);
   };
 
   return (
@@ -39,6 +58,7 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
 
       {/* Submit button for booking the appointment */}
       <button type="submit">Book Appointment</button>
+      {error && <div className='error'>{error}</div>}
     </form>
   );
 };

@@ -27,11 +27,11 @@ const getBooking = async (req, res) => {
 
 // create a new booking
 const createBooking = async (req, res) => {
-    const {date, time, user, details } = req.body
+    const {date, time, /*user,*/ details } = req.body
 
     // add document to database
     try {
-        const booking = await Booking.create(date, time, user, details)
+        const booking = await Booking.create({date, time, /*user,*/ details})
         res.status(200).json(booking)
     } catch (error) {
         res.status(400).json({error: error.message})
