@@ -2,20 +2,15 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
-import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import ForgotPassword from '../Components/ForgotPassword';
-import { GoogleIcon, FacebookIcon, GetBetterIcon } from '../Components/CostumIcons';
+import { GetBetterIcon } from '../Components/CostumIcons';
 import AppTheme from '../shared-theme/AppTheme';
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -62,15 +57,6 @@ export default function SignIn(props) {
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -140,7 +126,7 @@ export default function SignIn(props) {
                 id="email"
                 type="email"
                 name="email"
-                placeholder="your@email.com"
+                placeholder="email"
                 autoComplete="email"
                 autoFocus
                 required
@@ -153,20 +139,12 @@ export default function SignIn(props) {
             <FormControl>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <FormLabel htmlFor="password">Password</FormLabel>
-                <Link
-                  component="button"
-                  onClick={handleClickOpen}
-                  variant="body2"
-                  sx={{ alignSelf: 'baseline' }}
-                >
-                  Forgot your password?
-                </Link>
               </Box>
               <TextField
                 error={passwordError}
                 helperText={passwordErrorMessage}
                 name="password"
-                placeholder="••••••••••"
+                placeholder="password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -177,11 +155,6 @@ export default function SignIn(props) {
                 color={passwordError ? 'error' : 'primary'}
               />
             </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <ForgotPassword open={open} handleClose={handleClose} />
             <Button
               type="submit"
               fullWidth
@@ -208,6 +181,7 @@ export default function SignIn(props) {
               </span>
             </Typography>
           </Box>
+          {/*
           <Divider>or</Divider>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Button
@@ -229,6 +203,7 @@ export default function SignIn(props) {
               Sign in with Facebook
             </Button>
           </Box>
+          */}
         </Card>
       </SignInContainer>
     </AppTheme>

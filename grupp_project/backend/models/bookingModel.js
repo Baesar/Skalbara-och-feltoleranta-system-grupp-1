@@ -7,10 +7,15 @@ const bookingSchema = new Schema({
         type: Date,
         required: true
     },
-    // time: {
-    //     type: Time???
-    //     required: true
-    // },
+    time: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User',
+        requires: true
+    },
     details: {
         type: String,
         required: true
