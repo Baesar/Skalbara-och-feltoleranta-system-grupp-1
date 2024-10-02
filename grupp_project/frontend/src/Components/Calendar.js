@@ -43,6 +43,8 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
             {availableTimes.map((time, index) => (
               <li
                 key={index}
+
+                // To do: add an if statement to determine whether the time is available or not
                 className={selectedTime === time ? 'selected' : ''}
                 onClick={() => handleTimeClick(time)} // Handle time selection
               >
