@@ -110,8 +110,13 @@ export default function SignUp() {
     return isValid;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!validateInputs()) {
+      return;
+    }
+
     const data = new FormData(event.currentTarget);
     console.log({
       name: data.get('name'),
@@ -195,7 +200,6 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                onClick={validateInputs}
               >
                 Sign up
               </Button>

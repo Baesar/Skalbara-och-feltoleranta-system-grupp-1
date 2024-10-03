@@ -20,6 +20,23 @@ const userSchema = new Schema({
     }
 })
 
+// static signin method
+userSchema.statics.signin = async function(email, password) {
+
+    const user = await this.findOne({ email })
+    if (!user) {
+        throw Error('Incorrect email')
+    }
+
+    const match = await bcrypt.compare(password, user.password)
+
+    if (!match) {
+        throw Error('Incorrect password')
+    }
+
+    return user
+}
+
 // static signup method
 userSchema.statics.signup = async function(username, email, password) {
     
@@ -39,7 +56,6 @@ userSchema.statics.signup = async function(username, email, password) {
     const user = await this.create({ username, email, password: hash })
 
     return user
-
 }
 
 module.exports = mongoose.model('User', userSchema)
