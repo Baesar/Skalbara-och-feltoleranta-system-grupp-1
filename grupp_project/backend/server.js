@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const bookingRoutes = require('./routes/bookings.js')
+const userRoutes = require('./routes/user.js')
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/bookings', bookingRoutes)
+app.use('/api/user', userRoutes)
 
 // connect to db
 mongoose.connect(process.env.ATLAS_URI)
