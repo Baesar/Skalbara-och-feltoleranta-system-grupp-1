@@ -60,6 +60,11 @@ export default function SignIn(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!validateInputs()) {
+      return;
+    }
+
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
@@ -159,7 +164,6 @@ export default function SignIn(props) {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={validateInputs}
             >
               Sign in
             </Button>
