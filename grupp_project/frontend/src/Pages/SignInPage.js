@@ -13,6 +13,8 @@ import { styled } from '@mui/material/styles';
 import { GetBetterIcon } from '../Components/CostumIcons';
 import AppTheme from '../shared-theme/AppTheme';
 
+import { useSignin } from '../hooks/useSignin';
+
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -58,7 +60,9 @@ export default function SignIn(props) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
 
-  const handleSubmit = (event) => {
+  const { signin, isLoading, error } = useSignin()
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!validateInputs()) {
@@ -66,6 +70,11 @@ export default function SignIn(props) {
     }
 
     const data = new FormData(event.currentTarget);
+    const email = data.get('email')
+    const password = data.get('password')
+
+    await signin(email, password)
+
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -164,9 +173,11 @@ export default function SignIn(props) {
               type="submit"
               fullWidth
               variant="contained"
+              disabled={isLoading}
             >
               Sign in
             </Button>
+            {error && <div className="error">{error}</div>}
             <Typography sx={{ textAlign: 'center' }}>
               Don&apos;t have an account?{' '}
               <span>
