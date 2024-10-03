@@ -1,5 +1,6 @@
 // Import necessary dependencies from React and PropTypes
 import React, { useState } from 'react'; 
+import { useBookingsContext } from '../hooks/useBookingsContext';
 import PropTypes from 'prop-types';  // For type-checking the props
 import './AppointmentForm.css';  // Import the corresponding CSS file for styling
 
@@ -7,7 +8,9 @@ import './AppointmentForm.css';  // Import the corresponding CSS file for stylin
 const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
   // Define a state variable 'details' with an empty string as the initial value
   const [details, setDetails] = useState('');
-  const [error, setError] = useState(null);
+
+  const { dispatch } = useBookingsContext()
+  const [error, setError] = useState(null)
 
   // Event handler for form submission
   const handleSubmit = async (e) => {
@@ -32,6 +35,7 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
     if (response.ok) {
       setError(null)
       console.log('new booking added', json)
+      dispatch({type: 'CREATE_BOOKING', payload: json})
     }
 
     onBookAppointment(appointmentData);
