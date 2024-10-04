@@ -23,16 +23,16 @@ const signInUser = async (req, res) => {
 // role , email , password , name, sirname, age , id, buildingAccess, accesslayer
 // signUp user
 const signUpUser = async (req, res) => {
-    const { email , password , name, sirname, age} = req.body
+    const { roles ,email , password , name, sirname, age} = req.body
 
 
     try {
-        const user = await User.signup(email , password , name, sirname, age)
+        const user = await User.signup(roles ,email , password , name, sirname, age)
 
         // create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email , password , name, sirname, age, token})
+        res.status(200).json({roles , email , password , name, sirname, age, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
