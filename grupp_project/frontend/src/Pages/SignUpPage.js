@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import getSignUpTheme from '../Components/theme/getSignUpTheme';
 import { GetBetterIcon } from '../Components/CostumIcons';
 
+import { useSignup } from '../hooks/useSignup';
+
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -56,6 +58,9 @@ export default function SignUp() {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+
+  const { signup, isLoading, error } = useSignup()
+
   // This code only runs on the client side, to determine the system color preference
   React.useEffect(() => {
     // Check if there is a preferred mode in localStorage
@@ -110,9 +115,21 @@ export default function SignUp() {
     return isValid;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!validateInputs()) {
+      return;
+    }
+
     const data = new FormData(event.currentTarget);
+    const username = data.get('name')
+    const email = data.get('email')
+    const password = data.get('password')
+
+
+    await signup(username, email, password)
+
     console.log({
       name: data.get('name'),
       //lastName: data.get('lastName'),
@@ -195,10 +212,11 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                onClick={validateInputs}
+                disabled={isLoading}
               >
                 Sign up
               </Button>
+              {error && <div className="error">{error}</div>}
               <Typography sx={{ textAlign: 'center' }}>
                 Already have an account?{' '}
                 <span>
