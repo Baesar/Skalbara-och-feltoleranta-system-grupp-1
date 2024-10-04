@@ -179,30 +179,30 @@ export default SignUpPage
 //     return isValid;
 //   };
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-//     if (!validateInputs()) {
-//       return;
-//     }
+  //   if (!validateInputs()) {
+  //     return;
+  //   }
 
-//     const data = new FormData(event.currentTarget);
-//     const username = data.get('name');
-//     const email = data.get('email');
-//     const password = data.get('password');
+  //   const data = new FormData(event.currentTarget);
+  //   const username = data.get('name');
+  //   const email = data.get('email');
+  //   const password = data.get('password');
 
-//     // Include hidden fields in signup
-//     await signup(username, email, password, defaultRole, defaultBuildingAccess, defaultAccessLayers);
+  //   // Include hidden fields in signup
+  //   await signup(username, email, password, 'member', [false , false], ["", ""]);
 
-//     console.log({
-//       name: data.get('name'),
-//       email: data.get('email'),
-//       password: data.get('password'),
-//       role: defaultRole,
-//       buildingAccess: defaultBuildingAccess,
-//       accessLayers: defaultAccessLayers,
-//     });
-//   };
+  //   console.log({
+  //     name: data.get('name'),
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //     role: defaultRole,
+  //     buildingAccess: defaultBuildingAccess,
+  //     accessLayers: defaultAccessLayers,
+  //   });
+  // };
 
 //   return (
 //     <ThemeProvider theme={showCustomTheme ? SignUpTheme : defaultTheme}>

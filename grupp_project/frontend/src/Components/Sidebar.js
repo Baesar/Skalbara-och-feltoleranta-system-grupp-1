@@ -29,6 +29,11 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to ="/Staff" activeClassName = "active">
+            Staff
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/SignIn" activeClassName="active">
             SignIn
           </NavLink>      
