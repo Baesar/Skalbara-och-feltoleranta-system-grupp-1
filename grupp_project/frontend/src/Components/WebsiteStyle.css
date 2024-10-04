@@ -3,12 +3,12 @@ in the entire website to increase
 resuability and cohesion
  */
 
- 
-form {
-   width: 100%;
-   font-size:large;
-   text-align: right;
-   margin-top: 10px;
+form.signup, form.signin {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
 }
 
 img {
@@ -18,8 +18,30 @@ img {
 
 form {
    padding: 2px;
-   font-size: 15px;
    border-radius: 5px;
+}
+
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  background: blue;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .navbar a {
@@ -37,6 +59,16 @@ form {
  .navbar a:hover {
    background-color: #8fe27f;
  }
+
+ nav button {
+  background:mediumturquoise;
+  color: black;
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
 
  #search-bar  {
    float: right;
@@ -111,6 +143,7 @@ form {
 
  body {
    background-image: url('../Images/white_abstract.jpg');
+   margin: 0;
  }
 
  .side-image {
@@ -133,3 +166,15 @@ form {
    z-index: 1000; /* Ensure the sidebar stays on top */
 
  }
+
+ div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid firebrick;
+  color:firebrick;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}

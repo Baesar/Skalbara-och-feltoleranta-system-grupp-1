@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const validator = require('validator')
 
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    username: {
+    firstname: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
     },
     email: {
         type: String, 
@@ -17,11 +21,19 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    role: {
+        type: String,
+        required: true
     }
 })
 
 // static signin method
 userSchema.statics.signin = async function(email, password) {
+
+    if (!email || !password) {
+        throw Error('All fields must be filled')
+    }
 
     const user = await this.findOne({ email })
     if (!user) {
@@ -38,22 +50,26 @@ userSchema.statics.signin = async function(email, password) {
 }
 
 // static signup method
-userSchema.statics.signup = async function(username, email, password) {
+userSchema.statics.signup = async function(firstname, lastname, email, password, role) {
     
-    const emailExists = await this.findOne({ email })
-    if (emailExists) {
-        throw Error('Email already in use')
+    // validation
+    if (!firstname || !lastname || !email || !password) {
+        throw Error('All fields must be filled')
+    }
+    if (!validator.isEmail(email)) {
+        throw Error('Email is not valid')
     }
 
-    const usernameExists = await this.findOne({ username })
-    if (usernameExists) {
-        throw Error('Username is aleady taken')
+    // check if email already exists
+    const exists = await this.findOne({ email })
+    if (exists) {
+        throw Error('Email already in use')
     }
 
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ username, email, password: hash })
+    const user = await this.create({ firstname, lastname, email, password: hash, role })
 
     return user
 }
