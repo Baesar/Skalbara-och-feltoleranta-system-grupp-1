@@ -11,7 +11,7 @@ const Adminpage = () =>
             
             <form>
 
-            </form>            
+            </form>
 
             <AdminForm></AdminForm>
         </div>

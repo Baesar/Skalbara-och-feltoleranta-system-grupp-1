@@ -7,15 +7,21 @@ Julius Norén<br>
 Darina Larsen<br>
 Rama Muharam
 
-
 ## Tutorial :
 
-step 1 : Step into the project folder called grupp_project using a command promt . Make sure you have installed node.js before this . 
+step 1 : Open a command prompt for both frontend folder and backend folder
 
-step 2 : Read the bulletpoints.txt outside of the project folder and copy paste it into the command promt . This is to install the required libraries to start the project .
+step 2 : Do "npm install" on both command prompts . If something is later amis go to installs.txt and take the appropriate install commands and paste them into the command prompt . There is one for backend and front end .
 
-step 3 : When finishing installing please use the command "npm start" to intiaite the website project 
+step 3 : in backend directory create a .env file and write the following 
+PORT=5000
+ATLAS_URI="your uri" .
+SECRET=baesargreaterthanashbenlolo
 
-step 4 : Get help with our website :) 
+for this you need to connect to a database. Mind ours is not in this readme file for privacy reasons. Ask Ahmed Hussein for it at huah21vn@student.ju.se
+
+step 4 : do "npm run dev" in the backend cmd and "npm start" in the frontend cmd.
+
+step 5: Book your therapy <3
 
 

@@ -21,7 +21,7 @@ const signInUser = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
-
+// role , email , password , name, sirname, age , id, buildingAccess, accesslayer
 // signUp user
 const signUpUser = async (req, res) => {
     const { firstname, lastname, email, password, role } = req.body
