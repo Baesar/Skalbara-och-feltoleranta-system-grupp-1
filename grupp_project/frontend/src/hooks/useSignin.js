@@ -23,10 +23,10 @@ export const useSignin = () => {
         }
 
         if (response.ok) {
-            // save the user to local storage
+            // Save the user to local storage
             localStorage.setItem('user', JSON.stringify(json))
 
-            // update the auth context
+            // Update the auth context
             dispatch({type: 'SIGNIN', payload: json})
 
             setIsLoading(false)
