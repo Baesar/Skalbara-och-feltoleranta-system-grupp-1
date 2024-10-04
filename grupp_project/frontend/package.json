@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "browserify-zlib": "^0.2.0",
     "mongodb": "^6.9.0",
+    "mongoose": "^8.7.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-calendar": "^5.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
