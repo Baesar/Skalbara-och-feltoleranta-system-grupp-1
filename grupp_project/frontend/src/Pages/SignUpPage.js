@@ -59,10 +59,10 @@ const SignUpPage = () => {
       {error && <div className="error">{error}</div>}
     </form>
   )
-
 }
 
 export default SignUpPage
+
 
 
 
@@ -149,8 +149,6 @@ export default SignUpPage
 //       setMode(systemPrefersDark ? 'dark' : 'light');
 //     }
 //   }, []);
-
-
 
 //   const validateInputs = () => {
 //     const email = document.getElementById('email');

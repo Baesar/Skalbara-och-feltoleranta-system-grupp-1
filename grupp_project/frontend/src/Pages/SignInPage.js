@@ -39,14 +39,14 @@ const SignInPage = () => {
         </NavLink> 
       </div>
 
-      <button disabled={isLoading}>Sign up</button>
+      <button disabled={isLoading}>Sign in</button>
       {error && <div className="error">{error}</div>}
     </form>
   )
-
 }
 
 export default SignInPage
+
 
 
 

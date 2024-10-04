@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Select, MenuItem, FormControl, InputLabel, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 //This is the form that makes it possible to comminucate to a server
 const AdminForm = () => {
+// anything after id is not required since its something admins only do. important for signup later 
 
   const [formData, setFormData] = useState({
     role: '',
@@ -10,7 +11,6 @@ const AdminForm = () => {
     password: '',
     name: '',
     sirname: '',
-    age: '',
     id: '',
     buildingAccess: {
       A: false,
@@ -54,6 +54,11 @@ const AdminForm = () => {
     e.preventDefault();
     // Handle form submission logic here
     console.log(formData, formData);
+
+    
+
+
+
   };
 
   return (
@@ -123,19 +128,7 @@ const AdminForm = () => {
         required
       />
 
-      {/* Age Input */}
-      <TextField
-        fullWidth
-        margin="normal"
-        id="age"
-        label="Age"
-        name="age"
-        type="number"
-        inputProps={{ min: 0 }}
-        value={formData.age}
-        onChange={handleInputChange}
-        required
-      />
+      
 
       {/* ID Input 
       Id should have 10 symbols. 2 random numbers, initials of the person then the rest are pure randomly.*/}

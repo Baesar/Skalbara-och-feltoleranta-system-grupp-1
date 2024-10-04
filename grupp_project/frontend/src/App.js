@@ -14,6 +14,7 @@ import Confirmation from './Components/Confirmation';
 
 // here we import components (model)
 import Sidebar from './Components/Sidebar';
+import StaffPage from './Pages/StaffPage';
 
 function App() {
   const { user } = useAuthContext()
@@ -24,6 +25,7 @@ function App() {
         <div className = "content">
           <Routes>
             <Route path = "/" element={<Homepage/>}/>
+            <Route path = "/Staff" element= {<StaffPage/>}/>
             <Route path = "/Home" element={<Homepage/>}/>
             <Route path = "/Admin" element={<Adminpage/>}/> 
             <Route path = "/Testing" element={<TestingGround/>}/> 
