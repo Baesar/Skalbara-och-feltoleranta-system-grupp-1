@@ -1,0 +1,51 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './WebsiteStyle.css'
+//import './Sidebar.css'; // Optional for styling
+
+// This is where we use an unordered list in the Sidebar to put up all the links
+const Sidebar = () => {
+  return (
+    <div className="sidebar">
+      <ul>
+        <li>
+            <NavLink to="/Home" activeClassName="active">
+              Home
+            </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Admin" activeClassName="active">
+           Admin
+          </NavLink>  
+        </li>
+        <li>   
+            <NavLink to="/Testing" activeClassName = "active">
+              Testing ground here
+            </NavLink>
+        </li>
+        <li>
+          <NavLink to="/User" activeClassName="active">
+            User
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to ="/Staff" activeClassName = "active">
+            Staff
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/SignIn" activeClassName="active">
+            SignIn
+          </NavLink>      
+        </li>
+        <li>
+          <NavLink to="/SignUp" activeClassName="active">
+            SignUp
+          </NavLink>     
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default Sidebar;
