@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useSignin } from '../hooks/useSignin';
 
+import { NavLink } from 'react-router-dom';
+
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +32,14 @@ const SignInPage = () => {
         value={password}
       />
 
-      <button disabled={isLoading}>Sign in</button>
+      <div className='no-account'>
+        <label>Don't have an account?</label>
+        <NavLink to="/SignUp" activeClassName="active" className={"navlink"}>
+          Sign up
+        </NavLink> 
+      </div>
+
+      <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
     </form>
   )

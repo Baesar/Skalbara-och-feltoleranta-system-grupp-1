@@ -27,7 +27,7 @@ label, input {
 input {
   padding: 10px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -39,8 +39,10 @@ form button {
   border: 0;
   color: #fff;
   padding: 10px;
+  margin-top: 10px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: medium;
   font-weight: bold;
 }
 
@@ -176,5 +178,24 @@ form button {
   margin: 20px 0;
 }
 input.error {
-  border: 1px solid var(--error);
+  border: 1px solid firebrick;
+}
+
+.already-account, .no-account {
+  display: flex;
+  margin: 5px 0;
+}
+
+.already-account .navlink, .no-account .navlink {
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.already-account .navlink:visited, .no-account .navlink:visited {
+  color: blue;
+}
+
+.already-account .navlink:hover, .no-account .navlink:hover {
+  text-decoration: underline;
 }

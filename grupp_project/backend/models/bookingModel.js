@@ -11,13 +11,12 @@ const bookingSchema = new Schema({
         type: String,
         required: true
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId, 
-    //     ref: 'User',
-    //     requires: true
-    // },
     details: {
         type: String,
+        required: true
+    },
+    user_id: {
+        type: String, 
         required: true
     }
 }, { timestamps: true })

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useSignup } from '../hooks/useSignup';
 
+import { NavLink } from 'react-router-dom';
+
 const SignUpPage = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -45,6 +47,13 @@ const SignUpPage = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
+
+      <div className='already-account'>
+        <label>Already have an account?</label>
+        <NavLink to="/SignIn" activeClassName="active" className={"navlink"}>
+          Sign in
+        </NavLink> 
+      </div>
 
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
