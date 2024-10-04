@@ -3,22 +3,62 @@ const bcrypt = require('bcrypt')
 
 const Schema = mongoose.Schema
 
+
+
+
 const userSchema = new Schema({
-    username: {
+    role: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     email: {
-        type: String, 
-        required: true, 
+        type: String,
+        required: true,
         unique: true
     },
     password: {
         type: String,
         required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    sirname: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number, // Change to Number if age is a numeric value
+        required: true
+    },
+    id: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    buildingAccess: {
+        A: {
+            type: Boolean,
+            default: false
+        },
+        B: {
+            type: Boolean,
+            default: false
+        }
+    },
+    accessLayers: {
+        A: {
+            type: String,
+            default: ''
+        },
+        B: {
+            type: String,
+            default: ''
+        }
     }
-})
+});
+
 
 // static signin method
 userSchema.statics.signin = async function(email, password) {
