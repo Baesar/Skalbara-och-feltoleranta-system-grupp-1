@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Select, MenuItem, FormControl, InputLabel, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 //This is the form that makes it possible to comminucate to a server
 const AdminForm = () => {
+// anything after id is not required since its something admins only do. important for signup later 
 
   const [formData, setFormData] = useState({
     role: '',
