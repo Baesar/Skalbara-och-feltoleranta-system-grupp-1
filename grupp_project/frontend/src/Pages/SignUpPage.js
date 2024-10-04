@@ -59,24 +59,23 @@ export default function SignUp() {
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
 
-  const { signup, isLoading, error } = useSignup()
+  const { signup, isLoading, error } = useSignup();
+
+  // Default values for hidden fields
+  const defaultRole = 'member';
+  const defaultBuildingAccess = { A: false, B: false };
+  const defaultAccessLayers = { A: '', B: '' };
 
   // This code only runs on the client side, to determine the system color preference
   React.useEffect(() => {
-    // Check if there is a preferred mode in localStorage
     const savedMode = localStorage.getItem('themeMode');
     if (savedMode) {
       setMode(savedMode);
     } else {
-      // If no preference is found, it uses system preference
-      const systemPrefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)',
-      ).matches;
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setMode(systemPrefersDark ? 'dark' : 'light');
     }
   }, []);
-
-
 
   const validateInputs = () => {
     const email = document.getElementById('email');
@@ -123,18 +122,20 @@ export default function SignUp() {
     }
 
     const data = new FormData(event.currentTarget);
-    const username = data.get('name')
-    const email = data.get('email')
-    const password = data.get('password')
+    const username = data.get('name');
+    const email = data.get('email');
+    const password = data.get('password');
 
-
-    await signup(username, email, password)
+    // Include hidden fields in signup
+    await signup(username, email, password, defaultRole, defaultBuildingAccess, defaultAccessLayers);
 
     console.log({
       name: data.get('name'),
-      //lastName: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
+      role: defaultRole,
+      buildingAccess: defaultBuildingAccess,
+      accessLayers: defaultAccessLayers,
     });
   };
 
@@ -142,27 +143,13 @@ export default function SignUp() {
     <ThemeProvider theme={showCustomTheme ? SignUpTheme : defaultTheme}>
       <CssBaseline enableColorScheme />
       <SignUpContainer direction="column" justifyContent="space-between">
-        <Stack
-          sx={{
-            justifyContent: 'center',
-            height: '100dvh',
-            p: 2,
-          }}
-        >
+        <Stack sx={{ justifyContent: 'center', height: '100dvh', p: 2 }}>
           <Card variant="outlined">
             <GetBetterIcon /> {/* SITEMARK THING. CHANGE IT :3 */}
-            <Typography
-              component="h1"
-              variant="h4"
-              sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
-            >
+            <Typography component="h1" variant="h4" sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}>
               Sign up
             </Typography>
-            <Box
-              component="form"
-              onSubmit={handleSubmit}
-              sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
-            >
+            <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <FormControl>
                 <FormLabel htmlFor="name">Username</FormLabel>
                 <TextField
@@ -189,7 +176,7 @@ export default function SignUp() {
                   variant="outlined"
                   error={emailError}
                   helperText={emailErrorMessage}
-                  color={passwordError ? 'error' : 'primary'}
+                  color={emailError ? 'error' : 'primary'}
                 />
               </FormControl>
               <FormControl>
@@ -208,12 +195,7 @@ export default function SignUp() {
                   color={passwordError ? 'error' : 'primary'}
                 />
               </FormControl>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                disabled={isLoading}
-              >
+              <Button type="submit" fullWidth variant="contained" disabled={isLoading}>
                 Sign up
               </Button>
               {error && <div className="error">{error}</div>}
@@ -221,46 +203,11 @@ export default function SignUp() {
                 Already have an account?{' '}
                 <span>
                   <NavLink to="/SignIn" activeClassName="active">
-                      Sign in
-                  </NavLink> 
-                  {/* 
-                  <Link
-                    href="/material-ui/getting-started/templates/sign-in/"
-                    variant="body2"
-                    sx={{ alignSelf: 'center' }}
-                  >
                     Sign in
-                  </Link>
-                  */}
+                  </NavLink>
                 </span>
               </Typography>
             </Box>
-            
-            {/*
-            <Divider>
-              <Typography sx={{ color: 'text.secondary' }}>or</Typography>
-            </Divider>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="outlined"
-                onClick={() => alert('Sign up with Google')}
-                startIcon={<GoogleIcon />}
-              >
-                Sign up with Google
-              </Button>
-              <Button
-                type="submit"
-                fullWidth
-                variant="outlined"
-                onClick={() => alert('Sign up with Facebook')}
-                startIcon={<FacebookIcon />}
-              >
-                Sign up with Facebook
-              </Button>
-            </Box>
-            */}
           </Card>
         </Stack>
       </SignUpContainer>
