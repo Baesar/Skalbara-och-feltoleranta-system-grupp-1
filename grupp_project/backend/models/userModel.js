@@ -28,15 +28,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    age: {
-        type: Number, // Change to Number if age is a numeric value
-        required: true
-    },
-    id: {
-        type: String,
-        required: true,
-        unique: true
-    },
     buildingAccess: {
         A: {
             type: Boolean,
