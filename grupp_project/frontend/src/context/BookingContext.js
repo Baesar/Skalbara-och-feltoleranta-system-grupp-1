@@ -23,7 +23,7 @@ export const bookingsReducer = (state, action) => {
 
 export const BookingContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(bookingsReducer, {
-        bookings: null
+        bookings: []
     })
 
     return (

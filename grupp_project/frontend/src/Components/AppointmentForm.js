@@ -1,6 +1,7 @@
 // Import necessary dependencies from React and PropTypes
 import React, { useState } from 'react'; 
 import { useBookingsContext } from '../hooks/useBookingsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 import PropTypes from 'prop-types';  // For type-checking the props
 import './AppointmentForm.css';  // Import the corresponding CSS file for styling
 
@@ -10,6 +11,8 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
   const [details, setDetails] = useState('');
 
   const { dispatch } = useBookingsContext()
+  const { user } = useAuthContext()
+
   const [error, setError] = useState(null)
 
   // Event handler for form submission
@@ -20,11 +23,17 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
     // Invoke the onBookAppointment function passed in as a prop
     // Pass the appointment details, selected date, and selected time as an object
 
+    if (!user) {
+      setError('You must be signed in')
+      return
+    }
+
     const response = await fetch('/api/bookings/', {
       method: 'POST',
       body: JSON.stringify(appointmentData),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
     const json = await response.json()

@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 
 // get all bookings
 const getBookings = async (req, res) => {
-    const bookings = await Booking.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+
+    const bookings = await Booking.find({ user_id }).sort({createdAt: -1})
 
     res.status(200).json(bookings)
 }
@@ -31,7 +33,8 @@ const createBooking = async (req, res) => {
 
     // add document to database
     try {
-        const booking = await Booking.create({date, time, /*user,*/ details})
+        const user_id = req.user._id
+        const booking = await Booking.create({date, time, details, user_id})
         res.status(200).json(booking)
     } catch (error) {
         res.status(400).json({error: error.message})
