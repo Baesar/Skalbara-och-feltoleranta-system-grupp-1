@@ -85,10 +85,14 @@ Key Requirements
 General Criteria
 
 * MERN Stack Implementation: Proper utilisation of the MongoDB, Express.js, React, and Node.js technologies. 
-* MVC: Proper use of the model, view, controller pattern described in class: proper MVC decomposition and follow the style guidelines discussed in lectures. Note that you should not directly manipulate the DOM in your code. 
-* Code Quality: Well-structured, documented, and maintainable code in both the front-end and back-end. In addition, your code and templates must be clean and readable. Remember to run ESLint before submitting. ESLint should raise no errors.
+* MVC: Proper use of the model, view, controller pattern described in class: proper MVC decomposition and 
+  follow the style guidelines discussed in lectures. Note that you should not directly manipulate the DOM in your code. 
+* Code Quality: Well-structured, documented, and maintainable code in both the front-end and back-end. 
+  In addition, your code and templates must be clean and readable. Remember to run ESLint before submitting. 
+  ESLint should raise no errors.
 * Functionality: The application's ability to perform the specified tasks accurately.
-* User Interface: An intuitive and responsive user interface created using React for event scheduling and management. Your app must be at least "reasonably nice" in appearance and convenience.
+* User Interface: An intuitive and responsive user interface created using React for event scheduling and management. 
+  Your app must be at least "reasonably nice" in appearance and convenience.
 * Testing and Debugging: Conduct thorough testing and debugging to ensure a robust and error-free application. 
 * Project Documentation: Detailed project documentation, including design documents, database schemas, and user manuals.
 

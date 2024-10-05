@@ -7,10 +7,10 @@ const userRoutes = require('./routes/user.js')
 const PORT = process.env.PORT;
 
 
-// express app
+// Express app
 const app = express()
 
-// middleware
+// Middleware
 app.use(express.json())
 
 app.use((req, res, next) => {
@@ -18,14 +18,14 @@ app.use((req, res, next) => {
     next();
 })
 
-// routes
+// Routes
 app.use('/api/bookings', bookingRoutes)
 app.use('/api/user', userRoutes)
 
-// connect to db
+// Connect to database
 mongoose.connect(process.env.ATLAS_URI)
     .then(() => {
-        // listen for requests
+        // Listen for requests
         app.listen(PORT, () => { 
             console.log(`server started on port ${PORT}`) ;
         })

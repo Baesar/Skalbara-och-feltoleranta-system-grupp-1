@@ -4,9 +4,6 @@ const validator = require('validator')
 
 const Schema = mongoose.Schema
 
-
-
-
 const userSchema = new Schema({
     firstname: {
         type: String,
@@ -30,7 +27,6 @@ const userSchema = new Schema({
         required: true
     }
 });
-
 
 // static signin method
 userSchema.statics.signin = async function(email, password) {
