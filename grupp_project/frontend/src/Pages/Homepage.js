@@ -1,32 +1,11 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
-import { useSignout } from '../hooks/useSignout';
 
 const Homepage = () => {
-  const {signout } = useSignout()
-
-  const handleClick = () => {
-    signout()
-  }
-
   return (
     <div>
       <header>
-        <div>
-          <img src="../Images/logo.png" style={{ height: '45px' }} alt="Logo" />
-        </div>
-
-        <nav className="navbar background">
-          <div className="navbar">
-            <a className="active" href="https://www.youtube.com/@DailyDoseOfInternet"><i className="home"></i> Home</a>
-            <a href="https://www.youtube.com/@DailyDoseOfInternet"><i className="envelope"></i> Contact</a>
-            <a href="https://www.youtube.com/@DailyDoseOfInternet"><i className="user"></i> Login</a>
-            <button onClick={handleClick}>Log out</button>
-            <input type="text" id="search-bar" name="search" placeholder="Search..." />
-          </div>
-        </nav>
-
         <div className="content">
           <img src={therapySessionImage} alt="okej" className="side-image" />
           <h1>Welcome to GetBetter!</h1>
