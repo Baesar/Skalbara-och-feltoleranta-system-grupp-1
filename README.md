@@ -17,7 +17,7 @@ step 2 : Do "npm install" on both command prompts . If something is later amis g
 step 3 : in backend directory create a .env file and write the following 
 ```
 PORT=5000
-ATLAS_URI="your uri" .
+ATLAS_URI="your uri" // get this from Ash via huah21vn@student.ju.se
 SECRET=baesargreaterthanashbenlolo
 EMAIL_ADDRESS=information.getbetter@gmail.com
 EMAIL_PASSWORD=ytkfipciftkduijx
