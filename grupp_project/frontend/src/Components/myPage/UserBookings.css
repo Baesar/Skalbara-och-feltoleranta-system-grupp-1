@@ -25,12 +25,6 @@ h2 {
     color: darkred;
 }
 
-.edit-form select {
-    padding: 5px;
-    font-size: 1rem;
-    margin: 5px;
-    width: 100%;
-}
 
 .booking-item {
     margin-bottom: 15px; 
