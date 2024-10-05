@@ -9,9 +9,6 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
   
-  // Get today's date
-  const today = new Date();
-
   const handleDateChange = (newDate) => {
     setDate(newDate);
     setSelectedTime(''); // Reset the selected time when a new date is chosen
@@ -38,7 +35,6 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
         onChange={handleDateChange}
         value={date}
         view="month"
-        minDate={today} // Disable past dates
       />
       {date && availableTimes.length > 0 && (
         <div className="appointments-list">
@@ -47,6 +43,8 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
             {availableTimes.map((time, index) => (
               <li
                 key={index}
+
+                // To do: add an if statement to determine whether the time is available or not
                 className={selectedTime === time ? 'selected' : ''}
                 onClick={() => handleTimeClick(time)} // Handle time selection
               >
