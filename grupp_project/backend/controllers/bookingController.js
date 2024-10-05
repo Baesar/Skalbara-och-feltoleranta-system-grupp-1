@@ -1,7 +1,7 @@
 const Booking = require('../models/bookingModel')
 const mongoose = require('mongoose')
 
-// get all bookings
+// Get all bookings
 const getBookings = async (req, res) => {
     const user_id = req.user._id
 
@@ -10,7 +10,7 @@ const getBookings = async (req, res) => {
     res.status(200).json(bookings)
 }
 
-// get a single booking
+// Get a single booking
 const getBooking = async (req, res) => {
     const { id } = req.params
 
@@ -27,7 +27,7 @@ const getBooking = async (req, res) => {
     res.status(200).json(booking)
 }
 
-// create a new booking
+// Create a new booking
 const createBooking = async (req, res) => {
     const {date, time, /*user,*/ details } = req.body
 
@@ -41,7 +41,7 @@ const createBooking = async (req, res) => {
     }
 }
 
-// delete a booking
+// Delete a booking
 const deleteBooking = async (req, res) => {
     const { id } = req.params
 
@@ -58,7 +58,7 @@ const deleteBooking = async (req, res) => {
     res.status(200).json(booking)
 }
 
-// update a workout
+// Update a workout
 const updateBooking = async (req, res) => {
     const { id } = req.params
 
