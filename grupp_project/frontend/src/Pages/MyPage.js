@@ -1,5 +1,14 @@
-import { useAuthContext } from "../hooks/useAuthContext"
+import UserBookings from "../Components/myPage/UserBookings"
+import UserInfo from "../Components/myPage/UserInfo"
 
 const MyPage = () => {
-    const { user } = useAuthContext()
+
+    return (
+        <div>
+            <UserInfo />
+            <UserBookings />
+        </div>
+    )
 }
+
+export default MyPage
