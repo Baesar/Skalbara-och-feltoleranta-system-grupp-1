@@ -142,12 +142,19 @@ form button {
   background-color: #7cc56d;
 }
 
- nav button {
+.nav li.logout:hover {
+  background-color: #3d7360;
+}
+
+ button.logout {
   background:mediumturquoise;
   color: black;
-  border: 2px solid var(--primary);
+  border: 2px solid rgb(37, 154, 150);
   padding: 6px 10px;
+  margin-top: 20px;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   font-size: 1em;
 }
