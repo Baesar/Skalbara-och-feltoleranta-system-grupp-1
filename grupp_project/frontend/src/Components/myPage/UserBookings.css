@@ -1,0 +1,52 @@
+.bookings {
+    padding: 20px;
+    text-align: left;
+    max-width: 80%; 
+    margin: 0 auto; 
+}
+
+h2 {
+    text-align: left; 
+    margin-left: 0;   
+    font-size: 1.8rem; 
+    color: #333; 
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: rgb(140, 131, 131);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.delete-button:hover {
+    color: darkred;
+}
+
+.edit-form select {
+    padding: 5px;
+    font-size: 1rem;
+    margin: 5px;
+    width: 100%;
+}
+
+.booking-item {
+    margin-bottom: 15px; 
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+}
+
+.booking-item h4 {
+    margin: 0 0 5px 0; 
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.booking-item p {
+    margin: 0; 
+    font-size: 1rem;
+}
