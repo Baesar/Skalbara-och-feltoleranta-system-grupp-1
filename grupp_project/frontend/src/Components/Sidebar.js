@@ -8,9 +8,9 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul>
         <li>
-            <NavLink to="/Home" activeclassname="active">
-              Home
-            </NavLink>
+          <NavLink to="/Home" activeclassname="active">
+            Home
+          </NavLink>
         </li>
         <li>
           <NavLink to="/Admin" activeclassname="active">
@@ -35,7 +35,7 @@ const Sidebar = () => {
         <li>
           <NavLink to="/SignIn" activeclassname="active">
             SignIn
-          </NavLink>      
+          </NavLink>
         </li>
         <li>
           <NavLink to="/SignUp" activeclassname="active">

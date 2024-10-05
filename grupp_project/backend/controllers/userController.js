@@ -14,10 +14,15 @@ const signInUser = async (req, res) => {
     try {
         const user = await User.signin(email, password)
 
+        const firstname = user.firstname
+        const lastname = user.lastname
+        const role = user.role
+
+
         // create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token})
+        res.status(200).json({firstname, lastname, email, role, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
