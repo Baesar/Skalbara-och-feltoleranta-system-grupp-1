@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react'
 export const BookingsContext = createContext()
 
 export const bookingsReducer = (state, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_BOOKINGS':
             return {
                 bookings: action.payload
