@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
+const sendEmail = require('../controllers/mailController')
 
 // function to generate a json web token for a given id
 const createToken = (_id) => {
@@ -21,7 +22,7 @@ const signInUser = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 }
-// role , email , password , name, sirname, age , id, buildingAccess, accesslayer
+
 // signUp user
 const signUpUser = async (req, res) => {
     const { firstname, lastname, email, password, role } = req.body
@@ -31,6 +32,9 @@ const signUpUser = async (req, res) => {
 
         // create a token for the user
         const token = createToken(user._id)
+
+        // Send a mail to the newly signed up user
+        await sendEmail(email, "Welcome to GetBetter!", "We are happy")
 
         res.status(200).json({firstname, lastname, email, role, token})
     } catch (error) {
