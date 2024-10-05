@@ -1,13 +1,23 @@
 const Booking = require('../models/bookingModel')
 const mongoose = require('mongoose')
 
-// Get all bookings
+// Get all bookings of a certain user
 const getBookings = async (req, res) => {
     const user_id = req.user._id
 
     const bookings = await Booking.find({ user_id }).sort({createdAt: -1})
 
     res.status(200).json(bookings)
+}
+
+// Get all bookings
+const getAllBookings = async (req, res) => {
+    try {
+        const bookings = await Booking.find().sort({ createdAt: -1 })
+        res.status(200).json(bookings)
+    } catch (error) {
+        res.status(500).json({ error: error.message})
+    }
 }
 
 // Get a single booking
@@ -79,6 +89,7 @@ const updateBooking = async (req, res) => {
 
 module.exports = {
     getBookings,
+    getAllBookings,
     getBooking,
     createBooking,
     deleteBooking,

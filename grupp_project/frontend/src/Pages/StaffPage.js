@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import StaffCalendar from '../Components/StaffCalendar'
 import BookingViewForStaff from '../Components/BookingViewForStaff';
 
@@ -9,8 +8,6 @@ function StaffPage() {
     const [selectedDate, setSelectedDate] = useState(null);
     // State for selected time, initially set to null
     const [selectedTime, setSelectedTime] = useState(null);
-    // Initialize the useNavigate hook to allow navigation
-    const navigate = useNavigate();
 
     const handleDateSelect = (date) => {
       setSelectedDate(date); // Set the selected date in state

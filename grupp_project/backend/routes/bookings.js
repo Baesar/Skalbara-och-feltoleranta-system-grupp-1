@@ -1,6 +1,7 @@
 const express = require('express')
 const {
     getBookings,
+    getAllBookings,
     getBooking,
     createBooking,
     deleteBooking,
@@ -14,8 +15,11 @@ const router = express.Router();
 // Require authentication for all booking routes
 router.use(requireAuth)
 
-// GET all bookings
+// GET all bookings of a certain user
 router.get('/', getBookings);
+
+// GET all bookings
+router.get('/all', getAllBookings)
 
 // GET a single booking
 router.get('/:id', getBooking)
