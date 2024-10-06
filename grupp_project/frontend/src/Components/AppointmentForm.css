@@ -6,14 +6,54 @@ form {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
+}
+
+h2 {
     text-align: center;
     color: #333;
-  }
-  
-  /* Appointments list styles */
+}
+
+/* Submit button for booking appointment */
+button[type="submit"] {
+    display: block;
+    width: auto; /* Change this to 'auto' or set a fixed width like '150px' */
+    padding: 12px 20px; /* Add horizontal padding for a better look */
+    background-color: #4c72a8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 15px left; /* Center the button */
+}
+
+/* Hover effect for the button */
+button[type="submit"]:hover {
+    background-color: #365a87; /* Darker blue on hover */
+}
+
+/* Focus effect for the button */
+button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(72, 123, 160, 0.4); /* Highlight button on focus */
+}
+
+
+/* Error message styling */
+.error {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Slightly darker red border */
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Appointments list styles */
 .appointments-list {
     margin-top: 20px;
     background-color: #fff;
@@ -42,6 +82,7 @@ form {
     padding: 8px;
     cursor: pointer;
     border-radius: 4px; /* Rounded corners for list items */
+    transition: background-color 0.3s ease;
 }
 
 .appointments-list li:hover {
@@ -52,4 +93,14 @@ form {
 .appointments-list li.selected {
     background-color: #8286e2;
     color: white;
+}
+
+/* Style for the textarea label */
+.details-label {
+    display: block; /* Make the label a block element */
+    margin-bottom: 10px; /* Add space below the label */
+    font-weight: bold; /* Make the label text bold */
+    color: #333; /* Dark color for good readability */
+    font-size: 20px; /* Increase font size for the label */
+    line-height: 1.5; /* Adjust line height for better spacing */
 }
