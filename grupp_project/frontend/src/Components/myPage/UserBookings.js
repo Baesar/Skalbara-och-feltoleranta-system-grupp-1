@@ -60,14 +60,15 @@ const UserBookings = () => {
             {bookings && bookings.map((booking, index) => (
                 <div key={booking._id} className="booking-item">
                     <h4>Session {index + 1}</h4>
-                    <p>
-                        <strong>Details:</strong> {booking.details}, 
-                        <strong>Date:</strong> {formatDate(booking.date)}, 
-                        <strong>Time:</strong> {booking.time}
-                    </p>
+                    <div className="booking-details">
+                        <p> <strong>Details:</strong> {booking.details} </p>
+                        <p className='date'> <strong>Date:</strong> {formatDate(booking.date)} </p>
+                        <p className='time'> <strong>Time:</strong> {booking.time} </p>
+                    </div>
                     {/* Delete Button */}
                     <button onClick={() => handleDelete(booking._id)} className="delete-button">
                         <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
+                        Delete
                     </button>
                 </div>
             ))}
