@@ -73,7 +73,7 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   
   const handleDateChange = async (newDate) => {
     setDate(newDate);
-    setSelectedTime(''); // Reset the selected time when a new date is chosen
+    handleTimeClick(null); // Reset the selected time when a new date is chosen
     onDateSelect(newDate); // Pass selected date up to parent component
   };
 
@@ -96,17 +96,23 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
         <div className="appointments-list">
           <h3>Available Times for {date.toDateString()}:</h3>
           <ul>
-            {availableTimes.map((time, index) => (
+            {potentialTimes.map((time, index) => (
               <li
                 key={index}
-                className={selectedTime === time ? 'selected' : ''}
-                onClick={() => handleTimeClick(time)} // Handle time selection
+                className={`${
+                  selectedTime === time ? 'selected' : ''} ${
+                  availableTimes.includes(time) ? 'available' : 'unavailable' 
+                }`}
+                onClick={() => availableTimes.includes(time) && handleTimeClick(time)} // Handle time selection
               >
                 {time}
               </li>
             ))}
           </ul>
         </div>
+      )}
+      {date && availableTimes.length === 0 && (
+        <h3>No available times for {date.toDateString()}</h3>
       )}
     </div>
   );
