@@ -85,7 +85,14 @@ button[type="submit"]:focus {
     transition: background-color 0.3s ease;
 }
 
-.appointments-list li:hover {
+.appointments-list li.unavailable {
+    padding: 8px;
+    cursor: not-allowed;
+    border-radius: 4px; /* Rounded corners for list items */
+    transition: background-color 0.3s ease;
+}
+
+.appointments-list li.available:hover {
     background-color: #7999ca; /* Light grey background on hover */
 }
 

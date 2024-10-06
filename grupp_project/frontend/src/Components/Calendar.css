@@ -108,3 +108,14 @@
     pointer-events: none;
     opacity: 0.6;
 }
+
+.available {
+    color: green;
+    cursor: pointer;
+}
+
+.unavailable {
+    color: gray;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
