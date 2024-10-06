@@ -77,6 +77,7 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
     onDateSelect(newDate); // Pass selected date up to parent component
   };
 
+  // Handle time selection
   const handleTimeClick = (time) => {
     setSelectedTime(time);
     onTimeSelect(time); // Pass selected time up to parent component
@@ -88,6 +89,7 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
         onChange={handleDateChange}
         value={date}
         view="month"
+        minDate={new Date()} // Prevents selecting past dates
       />
       {loading && <p>Loading available times...</p>}
       {date && availableTimes.length > 0 && !loading && (
