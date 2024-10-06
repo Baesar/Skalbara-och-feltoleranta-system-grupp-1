@@ -11,8 +11,6 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   const [selectedTime, setSelectedTime] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const bookingsOnSelectedDate = []
-
   const { user } = useAuthContext()
 
   const potentialTimes = [

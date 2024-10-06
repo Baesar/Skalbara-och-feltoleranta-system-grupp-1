@@ -27,6 +27,11 @@ function Userpage() {
     navigate('/confirmation', { state: { appointment: appointmentData } });
   };
 
+  // Handler function when the appointment is canceled in the AppointmentForm
+  const handleCancelAppointment = () => {
+    handleTimeSelect(null)
+  }
+
   return (
     <div>
       <h1>Book Your Therapy</h1>
@@ -43,6 +48,7 @@ function Userpage() {
           selectedDate={selectedDate} // Pass the selected date
           selectedTime={selectedTime} // Pass the selected time
           onBookAppointment={handleBookAppointment} // Pass appointment booking handler
+          onCancelAppointment={handleCancelAppointment} // Padd appointment cancel handler
         />
       )}
     </div>

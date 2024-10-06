@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';  // For type-checking the props
 import './AppointmentForm.css';  // Import the corresponding CSS file for styling
 
 // Define the AppointmentForm component
-const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
+const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment, onCancelAppointment }) => {
   // Define a state variable 'details' with an empty string as the initial value
   const [details, setDetails] = useState('');
 
@@ -69,6 +69,11 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
     onBookAppointment(appointmentData);
   };
 
+  const handleCancelAppointment = () => {
+    setDetails('')
+    onCancelAppointment()
+  }
+
   return (
     // Form for booking an appointment, the onSubmit event is linked to the handleSubmit function
     <form onSubmit={handleSubmit}>
@@ -88,9 +93,12 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
     />
   </label>
 
-
+    <div className='submit-cancel'>
       {/* Submit button for booking the appointment */}
       <button type="submit">Book Appointment</button>
+
+      <button className='cancel' type="button" onClick={handleCancelAppointment}>Cancel</button>
+    </div>
       {error && <div className='error'>{error}</div>}
     </form>
   );
