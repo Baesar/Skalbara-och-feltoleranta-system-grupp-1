@@ -5,7 +5,16 @@ const mongoose = require('mongoose')
 const getBookings = async (req, res) => {
     const user_id = req.user._id
 
-    const bookings = await Booking.find({ user_id }).sort({createdAt: -1})
+    const bookings = await Booking.find({ user_id }).sort({date: 1})
+
+    const timeOrder = {
+        '10:00 - 11:00 AM': 1,
+        '11:00 - 12:00 PM': 2,
+        '01:00 - 02:00 PM': 3,
+        '03:00 - 04:00 PM': 4
+    }
+
+    bookings.sort((a, b) => timeOrder[a.time] - timeOrder[b.time])
 
     res.status(200).json(bookings)
 }

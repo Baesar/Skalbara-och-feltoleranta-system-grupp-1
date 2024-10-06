@@ -27,11 +27,12 @@ h2 {
 
 
 .booking-item {
-    margin-bottom: 15px; 
+    margin: 15px auto; 
     padding: 10px;
     border: 1px solid #ccc; 
     border-radius: 5px; 
     background-color: #f9f9f9; 
+    max-width: 500px;
 }
 
 .booking-item h4 {
@@ -41,6 +42,27 @@ h2 {
 }
 
 .booking-item p {
-    margin: 0; 
+    margin: 0;
     font-size: 1rem;
+}
+
+.booking-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-details p {
+    margin: 5px 0 15px 0;
+    padding: 0;
+    font-family: Georgia, Times, serif;
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: #000000;
+   background-color: #f9f9f9;
+   text-align: left;  
+}
+
+.booking-details p.date, .booking-details p.time {
+   font-size: 1.3rem; 
+   margin: 5px 0;
 }
