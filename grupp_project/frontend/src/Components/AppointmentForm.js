@@ -79,14 +79,15 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
       <p>Time: {selectedTime}</p>
 
       {/* Input field for entering appointment details */}
-      <label>
-        Details:
-        <textarea
-          value={details}  // Controlled input: the value is linked to the 'details' state
-          onChange={(e) => setDetails(e.target.value)}  // Update the 'details' state when the input changes
-          required  // Make the textarea required
-        />
-      </label>
+  <label className="details-label">
+    Details:
+    <textarea
+      value={details}  // Controlled input: the value is linked to the 'details' state
+      onChange={(e) => setDetails(e.target.value)}  // Update the 'details' state when the input changes
+      required  // Make the textarea required
+    />
+  </label>
+
 
       {/* Submit button for booking the appointment */}
       <button type="submit">Book Appointment</button>
