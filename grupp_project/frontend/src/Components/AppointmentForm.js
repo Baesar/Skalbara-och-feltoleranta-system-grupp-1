@@ -18,8 +18,27 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment }) => {
   // Event handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();  // Prevent the default form submission behavior (e.g., page refresh)
-    const appointmentData = { date: selectedDate, time: selectedTime, details };
-    console.log('Appointment Data:', appointmentData);
+
+    const startTime = selectedTime.split(' - ')[0]
+    const [timeString, meridiem] = startTime.split(' ');
+    let [hours, minutes] = timeString.split(':').map(Number);
+
+    if (meridiem === 'PM' && hours !== 12) {
+      hours += 12;
+    } else if (meridiem === 'AM' && hours === 12) {
+      hours = 0;
+    }
+
+    const utcDate = new Date(Date.UTC(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate(),
+      hours,
+      minutes
+    ))
+
+    const appointmentData = { date: utcDate, time: selectedTime, details };
+    console.log('Appointment Data (UTC):', appointmentData);
     // Invoke the onBookAppointment function passed in as a prop
     // Pass the appointment details, selected date, and selected time as an object
 

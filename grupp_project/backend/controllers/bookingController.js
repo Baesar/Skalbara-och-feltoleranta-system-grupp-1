@@ -39,7 +39,7 @@ const getBooking = async (req, res) => {
 
 // Create a new booking
 const createBooking = async (req, res) => {
-    const {date, time, /*user,*/ details } = req.body
+    const {date, time, details } = req.body
 
     // add document to database
     try {
