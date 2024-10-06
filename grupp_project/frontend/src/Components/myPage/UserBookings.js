@@ -9,6 +9,14 @@ const UserBookings = () => {
     const { bookings, dispatch } = useBookingsContext();
     const { user } = useAuthContext();
 
+    const userRole = () => {
+        if (!user) {
+            return 'member'
+        }
+
+        return user.role
+    }
+
     useEffect(() => {
         const fetchBookings = async () => {
             const response = await fetch('/api/bookings', {
@@ -56,8 +64,8 @@ const UserBookings = () => {
 
     return (
         <div className="bookings">
-            <h2>Your Bookings</h2>
-            {bookings && bookings.map((booking, index) => (
+            {(userRole() === 'member') && <h2>Your Bookings</h2>}
+            {bookings.length > 0 ? (bookings.map((booking, index) => (
                 <div key={booking._id} className="booking-item">
                     <h4>Session {index + 1}</h4>
                     <div className="booking-details">
@@ -71,7 +79,9 @@ const UserBookings = () => {
                         Delete
                     </button>
                 </div>
-            ))}
+            ))
+            ) : (
+                (userRole() === 'member') && <h3>You have no bookings</h3>)}
         </div>
     );
 };

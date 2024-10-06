@@ -1,3 +1,4 @@
+import './UserInfo.css'
 import { useAuthContext } from "../../hooks/useAuthContext"
 
 const UserInfo = () => {
@@ -12,7 +13,7 @@ const UserInfo = () => {
     }
 
     return (
-        <div>
+        <div className="user-info">
             <h2>My Page!</h2>
             <label>Name: {user.firstname} {user.lastname}</label>
             <label>Email: {user.email}</label>
