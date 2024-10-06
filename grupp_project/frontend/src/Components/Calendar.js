@@ -8,7 +8,8 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   const [date, setDate] = useState(null); // Start with no date selected
   const [availableTimes, setAvailableTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState('');
-  
+
+  // Handle date selection
   const handleDateChange = (newDate) => {
     setDate(newDate);
     setSelectedTime(''); // Reset the selected time when a new date is chosen
@@ -24,6 +25,7 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
     onDateSelect(newDate); // Pass selected date up to parent component
   };
 
+  // Handle time selection
   const handleTimeClick = (time) => {
     setSelectedTime(time);
     onTimeSelect(time); // Pass selected time up to parent component
@@ -35,6 +37,7 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
         onChange={handleDateChange}
         value={date}
         view="month"
+        minDate={new Date()} // Prevents selecting past dates
       />
       {date && availableTimes.length > 0 && (
         <div className="appointments-list">
@@ -43,8 +46,6 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
             {availableTimes.map((time, index) => (
               <li
                 key={index}
-
-                // To do: add an if statement to determine whether the time is available or not
                 className={selectedTime === time ? 'selected' : ''}
                 onClick={() => handleTimeClick(time)} // Handle time selection
               >
