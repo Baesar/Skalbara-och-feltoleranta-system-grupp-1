@@ -38,7 +38,7 @@ function App() {
             <Route path="/User" element={user ? (user.role === 'member' ? <Userpage/> : NavigateAppUsage()) : <Navigate to="/SignIn"/>}/>
             <Route path = "/Staff" element= {user ? (user.role === 'staff' ? <StaffPage/> : NavigateAppUsage()) : <Navigate to="/SignIn"/>}/>
             <Route path = "/Admin" element={user ? (user.role === 'admin' ? <Adminpage/> : NavigateAppUsage()) : <Navigate to="/SignIn"/>}/>
-            <Route path = "/Testing" element={<TestingGround/>}/>
+            
             <Route path="/confirmation" element={<Confirmation />}/>
           </Routes>
           <Sidebar/>
