@@ -4,7 +4,7 @@ import StaffPage from './StaffPage';
 const TestingGround = () => {
     return(
         <div>
-            <StaffPage />
+             
         </div>
     )
 }

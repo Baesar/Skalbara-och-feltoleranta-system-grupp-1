@@ -17,11 +17,7 @@ const Sidebar = () => {
            Admin
           </NavLink>  
         </li>
-        <li>   
-          <NavLink to="/Testing" activeclassname = "active">
-            Testing ground here
-          </NavLink>
-        </li>
+        
         <li>
           <NavLink to="/User" activeclassname="active">
             User
