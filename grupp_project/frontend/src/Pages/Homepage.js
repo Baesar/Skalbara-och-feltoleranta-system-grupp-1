@@ -7,8 +7,8 @@ const Homepage = () => {
     <div>
       <header>
         <div className="content">
-          <img src={therapySessionImage} alt="okej" className="side-image" />
           <h1>Welcome to GetBetter!</h1>
+          <img src={therapySessionImage} alt="okej" className="side-image" />
         </div>
       </header>
 
