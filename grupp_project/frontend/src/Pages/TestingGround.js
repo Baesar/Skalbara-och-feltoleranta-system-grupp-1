@@ -1,10 +1,10 @@
 import React from 'react'
-import StaffPage from './StaffPage';
+import AdminList from './AdminListPage';
 
 const TestingGround = () => {
     return(
         <div>
-             
+             <AdminList/>
         </div>
     )
 }

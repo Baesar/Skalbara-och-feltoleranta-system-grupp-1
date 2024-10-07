@@ -266,6 +266,46 @@ input.error {
   text-decoration: underline;
 }
 
+.users {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 20px;
+  gap: 20px;
+}
+
+.user-item {
+  margin: 15px auto; 
+  padding: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  background-color: #f9f9f9; 
+  max-width: 500px;
+}
+
+.user-item h4 {
+  margin: 0 0 5px 0; 
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.user-item p {
+  margin: 5px 0 15px 0;
+    padding: 0;
+    font-family: Georgia, Times, serif;
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: #000000;
+   background-color: #f9f9f9;
+   text-align: left;  
+}
+
+.members, .staff {
+  flex: 1;
+  margin-right: 20px;
+  max-width: 700px;
+}
+
 @media only screen and (max-width: 617px) {
   .content h1 {
     margin-bottom: 50px;
