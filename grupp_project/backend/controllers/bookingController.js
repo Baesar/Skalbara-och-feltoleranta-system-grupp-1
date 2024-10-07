@@ -68,7 +68,7 @@ const deleteBooking = async (req, res) => {
         return res.status(404).json({error: 'No such booking'})
     }
 
-    const booking  = await Booking.findOneAndDelete({_id: id})
+    const booking = await Booking.findOneAndDelete({_id: id})
 
     if (!booking) {
         return res.status(404).json({error: 'No such booking'})
