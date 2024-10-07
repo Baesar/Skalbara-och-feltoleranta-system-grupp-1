@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useBookingsContext } from '../../hooks/useBookingsContext';
+import { useBookingsContext } from '../hooks/useBookingsContext'
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -69,6 +69,10 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
     if (response.ok) {
         const deletedBooking = await response.json();
         dispatch({ type: 'DELETE_BOOKING', payload: deletedBooking });
+
+        setBookingsOnSelectedDate(prevBookings => 
+          prevBookings.filter(booking => booking._id !== id)
+        );
     }
 };
 
