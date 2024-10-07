@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useBookingsContext } from '../../hooks/useBookingsContext';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
   const [date, setDate] = useState(null); // Start with no date selected
   const [bookingsOnSelectedDate, setBookingsOnSelectedDate] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const { bookings, dispatch } = useBookingsContext()
   const { user } = useAuthContext()
 
   useEffect(() => {
@@ -51,6 +56,32 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
     onDateSelect(newDate); // Pass selected date up to parent component
   };
 
+  const handleDelete = async (id) => {
+    if (!user) return;
+
+    const response = await fetch(`/api/bookings/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${user.token}`
+        }
+    });
+
+    if (response.ok) {
+        const deletedBooking = await response.json();
+        dispatch({ type: 'DELETE_BOOKING', payload: deletedBooking });
+    }
+};
+
+  // Helper function to format the date
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+  };
+
   return (
     <div className="calendar-container">
       <Calendar
@@ -66,12 +97,26 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
           <div>No booked sessions</div>
         ) : (
           <ul>
-            {bookingsOnSelectedDate.map((booking) => (
-              <li key={booking._id} >
+            {bookingsOnSelectedDate.map((booking, index) => (
+              <div key={booking._id} className="booking-item">
+              <h4>Session {index + 1}</h4>
+              <div className="booking-details">
+                  <p> <strong>Details:</strong> {booking.details} </p>
+                  <p className='date'> <strong>Date:</strong> {formatDate(booking.date)} </p>
+                  <p className='time'> <strong>Time:</strong> {booking.time} </p>
+              </div>
+              {/* Delete Button */}
+              <button onClick={() => handleDelete(booking._id)} className="delete-button">
+                  <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
+                  Delete
+              </button>
+            </div>
+              
+              /*<li key={booking._id} >
                 <p>Time: {booking.time}</p>
                 <p>Details: {booking.details}</p>
                 <p>User_id: {booking.user_id}</p>
-              </li>
+              </li>*/
             ))}
           </ul>
         )) : (
