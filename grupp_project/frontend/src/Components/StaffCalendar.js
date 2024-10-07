@@ -12,7 +12,7 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
   const [bookingsOnSelectedDate, setBookingsOnSelectedDate] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { bookings, dispatch } = useBookingsContext()
+  const { dispatch } = useBookingsContext()
   const { user } = useAuthContext()
 
   useEffect(() => {
@@ -74,16 +74,6 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
           prevBookings.filter(booking => booking._id !== id)
         );
     }
-};
-
-  // Helper function to format the date
-  const formatDate = (isoString) => {
-    const date = new Date(isoString);
-    return date.toLocaleDateString(undefined, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
   };
 
   return (
@@ -106,8 +96,8 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
               <h4>Session {index + 1}</h4>
               <div className="booking-details">
                   <p> <strong>Details:</strong> {booking.details} </p>
-                  <p className='date'> <strong>Date:</strong> {formatDate(booking.date)} </p>
                   <p className='time'> <strong>Time:</strong> {booking.time} </p>
+                  <p className='user-id'> <strong>User_id:</strong> {booking.user_id} </p>
               </div>
               {/* Delete Button */}
               <button onClick={() => handleDelete(booking._id)} className="delete-button">
@@ -115,12 +105,6 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
                   Delete
               </button>
             </div>
-              
-              /*<li key={booking._id} >
-                <p>Time: {booking.time}</p>
-                <p>Details: {booking.details}</p>
-                <p>User_id: {booking.user_id}</p>
-              </li>*/
             ))}
           </ul>
         )) : (

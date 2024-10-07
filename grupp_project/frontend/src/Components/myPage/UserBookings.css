@@ -62,7 +62,7 @@ h2 {
    text-align: left;  
 }
 
-.booking-details p.date, .booking-details p.time {
+.booking-details p.date, .booking-details p.time, .booking-details p.user-id {
    font-size: 1.3rem; 
    margin: 5px 0;
 }

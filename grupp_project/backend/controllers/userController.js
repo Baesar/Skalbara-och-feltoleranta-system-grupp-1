@@ -1,6 +1,7 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const sendEmail = require('../controllers/mailController')
+const mongoose = require('mongoose')
 
 // Function to generate a json web token for a given id
 const createToken = (_id) => {
@@ -56,6 +57,7 @@ const getUsers = async (req, res) => {
         res.status(500).json({ message: error.message }); // Handle error
     }
 };
+
 const deleteUser = async (req, res ) => {
     const {id} = req.params
 
