@@ -85,42 +85,42 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
   };
 
   return (
-    <div className="calendar-container">
-      <Calendar
-        onChange={handleDateChange}
-        value={date}
-        view="month"
-      />
-      {date ? <h3>Bookings for {date.toDateString()}:</h3> : <h4>No date selected</h4>}
-      {loading ? (
-        <div>Loading bookings...</div>
-      ) : date ? (
-        bookingsOnSelectedDate.length === 0 ? (
-          <div>No booked sessions</div>
-        ) : (
-          <ul>
-            {bookingsOnSelectedDate.map((booking, index) => (
-              <div key={booking._id} className="booking-item">
-              <h4>Session {index + 1}</h4>
-              <div className="booking-details">
-                  <p> <strong>Details:</strong> {booking.details} </p>
-                  <p className='time'> <strong>Time:</strong> {booking.time} </p>
-                  <p className='user-id'> <strong>Name:</strong> {booking.userDetails.firstname} {booking.userDetails.lastname} </p>
-                  <p className='user-id'> <strong>Email:</strong> {booking.userDetails.email} </p>
+      <div className="calendar-container">
+        <Calendar
+          onChange={handleDateChange}
+          value={date}
+          view="month"
+        />
+        {date ? <h3>Bookings for {date.toDateString()}:</h3> : <h4>No date selected</h4>}
+        {loading ? (
+          <div>Loading bookings...</div>
+        ) : date ? (
+          bookingsOnSelectedDate.length === 0 ? (
+            <div>No booked sessions</div>
+          ) : (
+            <ul>
+              {bookingsOnSelectedDate.map((booking, index) => (
+                <div key={booking._id} className="booking-item">
+                <h4>Session {index + 1}</h4>
+                <div className="booking-details">
+                    <p> <strong>Details:</strong> {booking.details} </p>
+                    <p className='time'> <strong>Time:</strong> {booking.time} </p>
+                    <p className='user-id'> <strong>Name:</strong> {booking.userDetails.firstname} {booking.userDetails.lastname} </p>
+                    <p className='user-id'> <strong>Email:</strong> {booking.userDetails.email} </p>
 
+                </div>
+                {/* Delete Button */}
+                <button onClick={() => handleDelete(booking._id)} className="delete-button">
+                    <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
+                    Delete
+                </button>
               </div>
-              {/* Delete Button */}
-              <button onClick={() => handleDelete(booking._id)} className="delete-button">
-                  <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
-                  Delete
-              </button>
-            </div>
-            ))}
-          </ul>
-        )) : (
-        <div></div>
-        )}
-    </div>
+              ))}
+            </ul>
+          )) : (
+          <div></div>
+          )}
+      </div>
   );
 };
 

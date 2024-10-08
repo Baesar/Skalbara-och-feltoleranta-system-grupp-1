@@ -12,13 +12,6 @@ const Homepage = () => {
         </div>
       </header>
 
-      <nav>
-        <ul>
-          <li><a href="#About-us">About Us</a></li>
-          <li><a href="#Contact-us">Contact Us</a></li>
-        </ul>
-      </nav>
-
       <section id="About-us">
         <h2>About Us</h2>
         <p>
