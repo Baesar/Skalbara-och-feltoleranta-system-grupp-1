@@ -1,0 +1,261 @@
+/*This is the css file used uniformly
+in the entire website to increase 
+resuability and cohesion
+ */
+
+form.signup, form.signin {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  background: var(--primary);
+  border: 0;
+  color: blue;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form.signup, form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+img {
+   width: 50px;
+   border-radius: 1px;
+}
+
+form {
+   padding: 2px;
+   border-radius: 5px;
+}
+
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  background: blue;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.nav {
+  background-color: #3d7360;
+  color: black;
+  font-size: large;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-logo-text h3 {
+  margin: 0;
+}
+
+.nav-left .boop-text {
+  font-size: 0.8rem;
+  color: #f0f0f0;
+  background-color: #3d7360;
+  margin: 0;
+
+  font-family: Georgia, Times, serif;
+  font-weight: 100;
+  padding: 0;
+  margin: 0; 
+  text-align: left;  
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav .navlink {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+
+.nav li .active {
+  background-color: #8fe27f;
+}
+
+.nav li:hover {
+  background-color: #7cc56d;
+}
+
+ nav button {
+  background:mediumturquoise;
+  color: black;
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+ h1 {
+   font-family: Georgia, Times, serif;
+   font-size: 3rem;
+   padding: 20px;
+   color: #228a48;
+   margin-bottom: 10px;
+   text-align: center;  
+   margin-left: 18%;
+   background-repeat: no-repeat; 
+   height: 5vh;
+ }
+
+ h2 {
+   font-family: Georgia, Times, serif;
+   font-size: 2rem;
+   padding: 20px;
+   color: #228a48;
+   text-decoration: underline;
+   margin-bottom: 10px;
+   text-align: left;  
+ }
+
+ p {
+   font-family: Georgia, Times, serif;
+   font-size: 1.5rem;
+   font-weight: 500;
+   padding: 20px;
+   color: #000000;
+   background-color: #d8e3df;
+   margin-bottom: 10px;
+   text-align: left;  
+ }
+
+
+ footer {
+   font-family: Georgia, Times, serif;
+   text-align: center;  
+   font-size: 0.1rem;
+   padding: 1px 0;    
+   position: fixed;     
+   width: 100%;         
+   bottom: 0;        
+}
+
+ .mybox
+ {
+    padding: 16px; 
+    border: 2px solid black;
+    text-align: center;  
+ }
+
+ body {
+   background-image: url('../Images/white_abstract.jpg');
+   margin: 0;
+ }
+
+ .side-image {
+   width: 400px;
+   height: auto;
+   float: right;
+   margin-bottom: 10px;
+   margin-right: 1%
+ }
+
+ .Sidebar {
+   position: fixed;
+   bottom: 0; /* Stick to the bottom of the viewport */
+   left: 0; /* Stick to the left side (or right if you prefer) */
+   width: 200px; /* Adjust the width of your sidebar */
+   background-color: #f0f0f0;
+   padding: 20px;
+   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+   height: 150px; /* Height of the sidebar */
+   z-index: 1000; /* Ensure the sidebar stays on top */
+
+ }
+
+ div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid firebrick;
+  color:firebrick;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid firebrick;
+}
+
+.already-account, .no-account {
+  display: flex;
+  margin: 5px 0;
+}
+
+.already-account .navlink, .no-account .navlink {
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.already-account .navlink:visited, .no-account .navlink:visited {
+  color: blue;
+}
+
+.already-account .navlink:hover, .no-account .navlink:hover {
+  text-decoration: underline;
+}

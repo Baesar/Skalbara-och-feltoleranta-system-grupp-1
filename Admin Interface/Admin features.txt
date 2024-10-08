@@ -1,6 +1,0 @@
-Features 
-
-* Add people to the data base 
-* display a group in the data base 
-* be able to delete people off the data base 
-* Change a persons information or access levels .
