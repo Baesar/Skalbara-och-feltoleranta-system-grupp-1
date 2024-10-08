@@ -13,7 +13,7 @@ const getBookings = async (req, res) => {
     const user_id = req.user._id
 
     const bookings = await Booking.find({ user_id }).sort({date: 1})
-
+    
     bookings.sort((a, b) => timeOrder[a.time] - timeOrder[b.time])
 
     res.status(200).json(bookings)
