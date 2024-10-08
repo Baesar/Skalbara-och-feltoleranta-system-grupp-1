@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 const timeOrder = {
     '10:00 - 11:00 AM': 1,
     '11:00 - 12:00 PM': 2,
-    '01:00 - 02:00 PM': 3,
-    '03:00 - 04:00 PM': 4
+    '13:00 - 14:00 PM': 3,
+    '15:00 - 16:00 PM': 4
 }
 
 // Get all bookings of a certain user
