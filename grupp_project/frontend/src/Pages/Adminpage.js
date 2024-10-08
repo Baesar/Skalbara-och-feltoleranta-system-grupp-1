@@ -9,7 +9,7 @@ const Adminpage = () =>
     return(
         <div className = "Admin">
             <p>Welcome to admin interface</p>
-            
+
             <NavLink to="/AdminList">List of Users</NavLink>
 
 
