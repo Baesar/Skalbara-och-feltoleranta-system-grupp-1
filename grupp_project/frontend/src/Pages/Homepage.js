@@ -31,6 +31,8 @@ const Homepage = () => {
           Therapist 2 : Julius <br /><br />
           Therapist 3 : Darina <br /><br />
           Therapist 4 : Ash <br /><br />
+          Email: information.getbetter@gmail.com<br /><br />
+
         </p>
       </section>
       <p>© 2024 GetBetter. All rights reserved.</p>
