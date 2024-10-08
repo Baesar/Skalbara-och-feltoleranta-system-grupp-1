@@ -58,6 +58,22 @@ const getUsers = async (req, res) => {
     }
 };
 
+const getUser = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    const user = await User.findById(id)
+
+    if (!user) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    res.status(200).json(user)
+};
+
 const deleteUser = async (req, res ) => {
     const {id} = req.params
 
@@ -74,4 +90,4 @@ const deleteUser = async (req, res ) => {
     res.status(200).json(user)
     
 }
-module.exports = { signInUser, signUpUser, getUsers, deleteUser }
+module.exports = { signInUser, signUpUser, getUsers, getUser, deleteUser }

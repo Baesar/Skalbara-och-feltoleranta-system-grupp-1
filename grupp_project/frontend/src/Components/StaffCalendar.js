@@ -40,8 +40,16 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
         ));
         return bookingDateUTC.getTime() === selectedDateUTC.getTime();
       })
+
+      const bookingsWithUserDetails = await Promise.all(bookedSessionsOnSelectedDate.map(async (booking) => {
+        const userResponse = await fetch(`/api/user/${booking.user_id}`, {
+          headers: { 'Authorization': `Bearer ${user.token}`}
+        })
+        const userDetails = await userResponse.json()
+        return { ...booking, userDetails }
+      }))
       
-      setBookingsOnSelectedDate(bookedSessionsOnSelectedDate)
+      setBookingsOnSelectedDate(bookingsWithUserDetails)
       setLoading(false)
     }
 
@@ -97,7 +105,9 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
               <div className="booking-details">
                   <p> <strong>Details:</strong> {booking.details} </p>
                   <p className='time'> <strong>Time:</strong> {booking.time} </p>
-                  <p className='user-id'> <strong>User_id:</strong> {booking.user_id} </p>
+                  <p className='user-id'> <strong>Name:</strong> {booking.userDetails.firstname} {booking.userDetails.lastname} </p>
+                  <p className='user-id'> <strong>Email:</strong> {booking.userDetails.email} </p>
+
               </div>
               {/* Delete Button */}
               <button onClick={() => handleDelete(booking._id)} className="delete-button">
