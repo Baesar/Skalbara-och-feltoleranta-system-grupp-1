@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; 
 import './Calendar.css'; 
+
+// Define available time slots
+const potentialTimes = [
+  '10:00 - 11:00 AM',
+  '11:00 - 12:00 PM',
+  '13:00 - 14:00 PM',
+  '15:00 - 16:00 PM',
+];
 
 const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
   const [date, setDate] = useState(null); // Start with no date selected
@@ -13,27 +21,8 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
 
   const { user } = useAuthContext();
 
-  // Define available time slots
-  const potentialTimes = [
-    '10:00 - 11:00 AM',
-    '11:00 - 12:00 PM',
-    '13:00 - 14:00 PM',
-    '15:00 - 16:00 PM',
-  ];
-
-  useEffect(() => {
-    if (date) {
-      const fetchAvailableTimes = async () => {
-        setLoading(true);
-        const bookedSessions = await getBookedSessions();
-        filterAvailableTimes(bookedSessions);
-        setLoading(false);
-      };
-      fetchAvailableTimes();
-    }
-  }, [date]);
-
-  const getBookedSessions = async () => {
+  
+  const getBookedSessions = useCallback(async () => {
     const response = await fetch('api/bookings/all', {
       headers: { Authorization: `Bearer ${user.token}` },
     });
@@ -49,24 +38,10 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
     });
 
     return bookedSessionsOnSelectedDate;
-  };
-
-  const parseTime = (timeStr) => {
-    const [time, modifier] = timeStr.split(' '); 
-    let [hours, minutes] = time.split(':').map(Number); // Extract hours and minutes
-
-    if (modifier === 'PM' && hours !== 12) {
-      hours += 12; 
-    }
-    if (modifier === 'AM' && hours === 12) {
-      hours = 0; 
-    }
-
-    return { hours, minutes };
-  };
-
+  }, [date, user]);
+  
   // Filter available times by excluding booked sessions and times that have passed (if today)
-  const filterAvailableTimes = (bookedSessions) => {
+  const filterAvailableTimes = useCallback((bookedSessions) => {
     const now = new Date(); // Current time
 
     const newAvailableTimes = potentialTimes.filter((time) => {
@@ -82,7 +57,34 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
     });
 
     setAvailableTimes(newAvailableTimes);
+  }, [date]);
+
+  useEffect(() => {
+    if (date) {
+      const fetchAvailableTimes = async () => {
+        setLoading(true);
+        const bookedSessions = await getBookedSessions();
+        filterAvailableTimes(bookedSessions);
+        setLoading(false);
+      };
+      fetchAvailableTimes();
+    }
+  }, [date, getBookedSessions, filterAvailableTimes]);
+
+  const parseTime = (timeStr) => {
+    const [time, modifier] = timeStr.split(' '); 
+    let [hours, minutes] = time.split(':').map(Number); // Extract hours and minutes
+
+    if (modifier === 'PM' && hours !== 12) {
+      hours += 12; 
+    }
+    if (modifier === 'AM' && hours === 12) {
+      hours = 0; 
+    }
+
+    return { hours, minutes };
   };
+
 
   const handleDateChange = (newDate) => {
     setDate(newDate);

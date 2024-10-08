@@ -28,6 +28,10 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment, onCanc
     }
 
     // Create a UTC date object based on the selected date and time
+    const startTime = selectedTime.split(' - ')[0]
+    const [timeString] = startTime.split(' ');
+    let [hours, minutes] = timeString.split(':').map(Number);
+
     const utcDate = new Date(Date.UTC(
       selectedDate.getFullYear(),
       selectedDate.getMonth(),
@@ -38,12 +42,17 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment, onCanc
 
     const appointmentData = { date: utcDate, time: selectedTime, details };
     
+    console.log('Appointment Data (UTC):', appointmentData);
+    // Invoke the onBookAppointment function passed in as a prop
+    // Pass the appointment details, selected date, and selected time as an object
+
     if (!user) {
       setError('You must be signed in');
       return;
     }
 
     // Send POST request to create a new booking
+
     const response = await fetch('/api/bookings/', {
       method: 'POST',
       body: JSON.stringify(appointmentData),
@@ -98,6 +107,21 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment, onCanc
       </div>
       
       {/* Display any error message */}
+  <label className="details-label">
+    Details:
+    <textarea
+      value={details}  // Controlled input: the value is linked to the 'details' state
+      onChange={(e) => setDetails(e.target.value)}  // Update the 'details' state when the input changes
+      required  // Make the textarea required
+    />
+  </label>
+
+    <div className='submit-cancel'>
+      {/* Submit button for booking the appointment */}
+      <button type="submit">Book Appointment</button>
+
+      <button className='cancel' type="button" onClick={handleCancelAppointment}>Cancel</button>
+    </div>
       {error && <div className='error'>{error}</div>}
     </form>
   );
@@ -113,3 +137,12 @@ AppointmentForm.propTypes = {
 
 export default AppointmentForm;
 
+// Prop types ensure the correct data types are passed to the component
+AppointmentForm.propTypes = {
+  selectedDate: PropTypes.instanceOf(Date).isRequired,  // Ensure selectedDate is a Date object
+  selectedTime: PropTypes.string.isRequired,  // Ensure selectedTime is a string
+  onBookAppointment: PropTypes.func.isRequired  // Ensure onBookAppointment is a function
+};
+
+// Export the component for use in other parts of the application
+export default AppointmentForm;
