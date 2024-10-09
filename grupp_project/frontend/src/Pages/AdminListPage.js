@@ -83,66 +83,64 @@ const AdminList = () => {
     };
 
     return (
-            (userRole() === 'admin') && (
-                <div>
-                    <h2>The users and staff</h2>
-                    <div className="users">
-
-                        <div className="members">
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <h3>Members</h3>
-                                <input
-                                    type='text'
-                                    placeholder='Search members...'
-                                    value={memberSearch}
-                                    onChange={(e) => setMemberSearch(e.target.value)}
-                                    style={{ marginLeft: '10px', maxWidth: '350px' }}
-                                />
-                            </div>
-                            {filteredMembers.map((aUser) => (
-                                <div key={aUser._id} className="user-item">
-                                    <div>
-                                        <p>Name: {aUser.firstname} {aUser.lastname}</p>
-                                        <p>Email: {aUser.email}</p>
-                                        <p>ID: {aUser._id}</p>
-                                    </div>
-                                    <button onClick={() => handleDelete(aUser._id)} className="delete-button">
-                                        <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
-                                        Delete
-                                    </button>
-                                </div>
-                            ))}
+        (userRole() === 'admin') && (
+            <div>
+                <h2>The members and staff</h2>
+                <div className="users">
+                    <div className="members">
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3>Members</h3>
+                            <input
+                                type='text'
+                                placeholder='Search members...'
+                                value={memberSearch}
+                                onChange={(e) => setMemberSearch(e.target.value)}
+                                style={{ marginLeft: '10px', maxWidth: '350px' }}
+                            />
                         </div>
-
-                        <div className="staff">
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <h3>Staff</h3>
-                                <input 
-                                    type="text" 
-                                    placeholder='Search staff...'
-                                    value={staffSearch}
-                                    onChange={(e) => setstaffSearch(e.target.value)}
-                                    style={{ marginLeft: '10px', maxWidth: '350px' }}
-                                />
-                            </div>
-                            {filteredStaff.map((aUser) => (
-                                <div key={aUser._id} className="user-item">
-                                    <div>
-                                        <p>Name: {aUser.firstname} {aUser.lastname}</p>
-                                        <p>Email: {aUser.email}</p>
-                                        <p>ID: {aUser._id}</p>
-                                    </div>
-                                    <button onClick={() => handleDelete(aUser._id)} className="delete-button">
-                                        <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
-                                        Delete
-                                    </button>
+                        {filteredMembers.map((aUser) => (
+                            <div key={aUser._id} className="user-item">
+                                <div>
+                                    <p>Name: {aUser.firstname} {aUser.lastname}</p>
+                                    <p>Email: {aUser.email}</p>
+                                    <p>ID: {aUser._id}</p>
                                 </div>
-                            ))}
-                        </div>
+                                <button onClick={() => handleDelete(aUser._id)} className="delete-button">
+                                    <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
+                                    Delete
+                                </button>
+                            </div>
+                        ))}
                     </div>
 
+                    <div className="staff">
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3>Staff</h3>
+                            <input 
+                                type="text" 
+                                placeholder='Search staff...'
+                                value={staffSearch}
+                                onChange={(e) => setstaffSearch(e.target.value)}
+                                style={{ marginLeft: '10px', maxWidth: '350px' }}
+                            />
+                        </div>
+                        {filteredStaff.map((aUser) => (
+                            <div key={aUser._id} className="user-item">
+                                <div>
+                                    <p>Name: {aUser.firstname} {aUser.lastname}</p>
+                                    <p>Email: {aUser.email}</p>
+                                    <p>ID: {aUser._id}</p>
+                                </div>
+                                <button onClick={() => handleDelete(aUser._id)} className="delete-button">
+                                    <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
+                                    Delete
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            )
+            </div>
+        )
     )
 }
 export default AdminList;

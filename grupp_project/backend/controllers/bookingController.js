@@ -14,7 +14,13 @@ const getBookings = async (req, res) => {
 
     const bookings = await Booking.find({ user_id }).sort({date: 1})
     
-    bookings.sort((a, b) => timeOrder[a.time] - timeOrder[b.time])
+    bookings.sort((a, b) => {
+        if (a.date.getTime() === b.date.getTime()) {
+            return timeOrder[a.time] - timeOrder[b.time]
+        } else {
+            return a.date - b.date
+        }
+    })
 
     res.status(200).json(bookings)
 }
