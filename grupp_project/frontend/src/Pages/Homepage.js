@@ -1,23 +1,14 @@
 import React from 'react';
 import '../Components/WebsiteStyle.css';  // Adjust this path as necessary
 import therapySessionImage from '../Images/therapy_session.jpg'; // Path to your image
-import logo from '../Images/logo.png'; // Path to your logo
 
 
 
 // Header Component
 const Header = () => (
   <header>
-    
- 
     <div className="content">
-      
       <h1>Welcome to GetBetter!</h1>
-      
-    </div>
-
-    <div className="content">
-    
     </div>
   </header>
 );
@@ -38,7 +29,6 @@ const Adoration = () => (
     </div>
   </section>
 );
-
 
 // About Us Section
 const AboutUs = () => (
