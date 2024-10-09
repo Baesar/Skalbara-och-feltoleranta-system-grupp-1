@@ -197,7 +197,7 @@ form button {
    text-align: center;  
    font-size: 0.1rem;
    padding: 1px 0;    
-   position: fixed;     
+  
    width: 100%;         
    bottom: 0;        
 }
@@ -316,7 +316,7 @@ footer {
   text-align: center;
   padding: 10px;
   background-color: #f0f0f0;
-  position: fixed;
+  
   width: 100%;
   bottom: 0;
 }
@@ -435,5 +435,39 @@ button.logout {
   .nav .navlink {
     font-size: medium;
   }
+}
+
+
+.adoration-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.adoration-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.adoration-text {
+  flex: 1; /* The text takes up 50% of the width */
+  padding-right: 20px;
+}
+
+.adoration-image {
+  flex: 1; /* The image takes up 50% of the width */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.adoration-image img {
+  max-width: 100%; /* Ensures the image scales properly */
+  height: auto;
+
+  width: 400px;    /* Set a larger width for the image */
+  height: auto;    /* Maintains aspect ratio */
+  max-height: 500px; /* Adjust the height if needed */
 }
 
