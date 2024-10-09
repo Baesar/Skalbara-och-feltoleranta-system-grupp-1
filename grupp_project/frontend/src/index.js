@@ -17,9 +17,9 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
         <UserContextProvider>
-        <BookingContextProvider>
-          <App />
-        </BookingContextProvider>
+          <BookingContextProvider>
+            <App />
+          </BookingContextProvider>
         </UserContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
