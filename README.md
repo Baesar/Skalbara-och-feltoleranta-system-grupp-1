@@ -34,7 +34,7 @@ In order to start the application you can either [use the .bat files](#using-the
 2. Open the run.bat file. This will start the backend server and the frontend application.
 
 ## Manual start
-1. Open two command prompt terminals, one for the frontend direcetory and one for the frontend directory.
+1. Open two command prompt terminals, one for the backend direcetory and one for the frontend directory.
 2. Run `npm install` in both the backend and the frontend.
 
 3. Inside the backend directory, run `npm run dev`, this will start the backend server. It should look like this and say "server started on port 5000".
@@ -47,15 +47,15 @@ In order to start the application you can either [use the .bat files](#using-the
 
 # The Application
 For unregistered users, only the *Home* page is visible.
-To register, you can either sign in to an existing account or create a new account by signing up. 
+To register, you can either sign in to an existing account or create a new account by signing up.  
 (Feel free to sign up using a real email address, as you will receive an email verification)
 ![Sign in/Sign up](https://github.com/user-attachments/assets/7b26346c-ccac-4ea5-aa4e-390228e69aef)
 
-There are three different roles that an account can have.
+There are three different roles that an account can have:
 - **Member**
 - **Staff**
-- **Admin**
- When creating a new account using the "Sign Up" button, the account will be assigned to the default role of **Member**
+- **Admin**  
+ When creating a new account using the "Sign Up" button, the account will be assigned to the default role of **Member**.
 
 ## **Member**
 The **Member** is your typical therapy-booker. **Members** can access the *User Page* via the *Make an Appointment* button and the *My Page* through the *My Page* button.
