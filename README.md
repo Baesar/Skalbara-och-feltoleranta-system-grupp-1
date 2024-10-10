@@ -89,9 +89,9 @@ In the *My Page*, you can view the details of your account, like *Name*, *Email*
 
 ## Login credentials
 Here are the login credentials for **Staff** and **Admin**:
-- Admin: 
-Email: admin@pmail.com  
-Password: admin123
+- Admin:
+  Email: admin@pmail.com
+  Password: admin123
 - Staff:
-Email: staffmcpower@pmail.com  
-Password: staff123
+  Email: staffmcpower@pmail.com
+  Password: staff123
