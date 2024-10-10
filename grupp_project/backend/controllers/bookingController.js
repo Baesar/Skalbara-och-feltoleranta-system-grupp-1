@@ -1,26 +1,20 @@
 const Booking = require('../models/bookingModel')
 const mongoose = require('mongoose')
 
-const timeOrder = {
-    '10:00 - 11:00 AM': 1,
-    '11:00 - 12:00 PM': 2,
-    '13:00 - 14:00 PM': 3,
-    '15:00 - 16:00 PM': 4
-}
-
 // Get all bookings of a certain user
 const getBookings = async (req, res) => {
     const user_id = req.user._id
 
     const bookings = await Booking.find({ user_id }).sort({date: 1})
-    
-    bookings.sort((a, b) => {
-        if (a.date.getTime() === b.date.getTime()) {
-            return timeOrder[a.time] - timeOrder[b.time]
-        } else {
-            return a.date - b.date
-        }
-    })
+
+    const timeOrder = {
+        '10:00 - 11:00 AM': 1,
+        '11:00 - 12:00 PM': 2,
+        '01:00 - 02:00 PM': 3,
+        '03:00 - 04:00 PM': 4
+    }
+
+    bookings.sort((a, b) => timeOrder[a.time] - timeOrder[b.time])
 
     res.status(200).json(bookings)
 }
@@ -28,10 +22,7 @@ const getBookings = async (req, res) => {
 // Get all bookings
 const getAllBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find().sort({ date: 1 })
-
-        bookings.sort((a, b) => timeOrder[a.time] - timeOrder[b.time])
-
+        const bookings = await Booking.find().sort({ createdAt: -1 })
         res.status(200).json(bookings)
     } catch (error) {
         res.status(500).json({ error: error.message})
