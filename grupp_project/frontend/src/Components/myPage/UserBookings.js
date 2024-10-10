@@ -49,8 +49,6 @@ const UserBookings = () => {
         if (response.ok) {
             const deletedBooking = await response.json();
             dispatch({ type: 'DELETE_BOOKING', payload: deletedBooking });
-
-            
         }
     };
 
