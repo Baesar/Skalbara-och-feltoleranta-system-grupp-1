@@ -28,10 +28,45 @@ const AdminForm = () => {
   };
 
 // this prints the info in the website. use f12 to see .
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData, formData);
+
+    const userData = { 
+      firstname: formData.firstname, 
+      lastname: formData.lastname, 
+      email: formData.email, 
+      password: formData.password, 
+      role: formData.role 
+    }
+
+    const response = await fetch('/api/user/create', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const json = await response.json()
+
+    if (!response.ok) {
+      console.error("Failed to create user", json.error);
+    }
+    
+    if (response.ok) {
+      console.log("User created successfully", json)
+
+      setFormData({
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        role: ''
+      })
+    }
+
+
+    
   };
 
   return (
