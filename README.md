@@ -5,7 +5,7 @@
 - [Participants](#participants)
 - [Preparations](#preparations)
 - [Run the application](#run-the-application)
-- [The Application]("the-application)
+- [The Application](#the-application)
 
 ### Participants:<br>
 Ahmed Hussein<br>
