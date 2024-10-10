@@ -41,10 +41,10 @@ In order to start the application you can either [use the .bat files](#using-the
 3. Inside the backend directory, run `npm run dev`, this will start the backend server. It should look like this and say "server started on port 5000".
 ![Backend server started](https://github.com/user-attachments/assets/b057c2a3-fb2a-4e41-9bce-f7e89fa3475f)
 
-4. Inside the frontend directory, run `npm start`, this will start the application. At first, it will display some errors, but after a short while it should look like this:
-![Frontend application started](https://github.com/user-attachments/assets/e9a917a4-5ffa-4907-90e3-6bd549fe1a3b)
+4. Inside the frontend directory, run `npm start`, this will start the application. At first, it will display some errors, but after a short while it should look like this:  
+   ![Frontend application started](https://github.com/user-attachments/assets/e9a917a4-5ffa-4907-90e3-6bd549fe1a3b)
 
-5. Book your therapy <3
+6. Book your therapy <3
 
 # The Application
 For unregistered users, only the *Home* page is visible.
@@ -83,7 +83,7 @@ The **Admin** is an account for managing users (both **Members** and **Staff**).
 
 ### *Admin Page*
 In the *Admin Page*, you have two interfaces. The first one is where you can create new users. The second interface is found by clicking on the *List of Users* link.   
-![List of Users](https://github.com/user-attachments/assets/f8ed5c97-d1f1-492e-b3b4-7d3f0077bd4b)
+![List of Users](https://github.com/user-attachments/assets/f8ed5c97-d1f1-492e-b3b4-7d3f0077bd4b)  
 Once there, you can view all existing users (except **Admin**). You can also delete users there. When a user is deleted, so is all bookings made by that user. 
 
 ### *My Page*
