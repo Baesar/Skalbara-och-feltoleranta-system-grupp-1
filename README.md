@@ -55,7 +55,8 @@ To register, you can either sign in to an existing account or create a new accou
 There are three different roles that an account can have:
 - **Member**
 - **Staff**
-- **Admin**
+- **Admin**  
+
 When creating a new account using the "Sign Up" button, the account will be assigned to the default role of **Member**.
 
 ## **Member**
@@ -89,9 +90,9 @@ In the *My Page*, you can view the details of your account, like *Name*, *Email*
 
 ## Login credentials
 Here are the login credentials for **Staff** and **Admin**:
-- Admin:
-  Email: admin@pmail.com
+- Admin:  
+  Email: admin@pmail.com  
   Password: admin123
-- Staff:
-  Email: staffmcpower@pmail.com
+- Staff:  
+  Email: staffmcpower@pmail.com  
   Password: staff123
