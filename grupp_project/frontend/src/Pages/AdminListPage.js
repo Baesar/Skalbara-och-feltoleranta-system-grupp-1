@@ -3,7 +3,7 @@ import { useUsersContext } from '../hooks/useUsersContext.js';
 import { useAuthContext } from '../hooks/useAuthContext.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import { NavLink } from "react-router-dom";
 
 
 const AdminList = () => {
@@ -85,6 +85,7 @@ const AdminList = () => {
     return (
         (userRole() === 'admin') && (
             <div>
+                <NavLink to="/Admin">Create users</NavLink>
                 <h2>The members and staff</h2>
                 <div className="users">
                     <div className="members">

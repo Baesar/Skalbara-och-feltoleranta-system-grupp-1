@@ -74,6 +74,21 @@ const getUser = async (req, res) => {
     res.status(200).json(user)
 };
 
+const createUser = async (req, res) => {
+    const { firstname, lastname, email, password, role } = req.body
+
+    try {
+        const user = await User.signup(firstname, lastname, email, password, role)
+
+        // Send a mail to the newly signed up user
+        await sendEmail(email, "Welcome to GetBetter!", "We are happy")
+
+        res.status(200).json({firstname, lastname, email, role})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 const deleteUser = async (req, res ) => {
     const {id} = req.params
 
@@ -90,4 +105,4 @@ const deleteUser = async (req, res ) => {
     res.status(200).json(user)
     
 }
-module.exports = { signInUser, signUpUser, getUsers, getUser, deleteUser }
+module.exports = { signInUser, signUpUser, getUsers, getUser, createUser, deleteUser }

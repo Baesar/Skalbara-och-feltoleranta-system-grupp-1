@@ -1,7 +1,7 @@
 const express = require('express')
 
 // Controller functions
-const { signInUser, signUpUser, getUsers, getUser, deleteUser } = require('../controllers/userController')
+const { signInUser, signUpUser, getUsers, getUser, createUser, deleteUser } = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -16,6 +16,9 @@ router.get('/', getUsers)
 
 //Get a single user
 router.get('/:id', getUser)
+
+// Create a user
+router.post('/create', createUser)
 
 // delete users
 router.delete('/:id' , deleteUser)
