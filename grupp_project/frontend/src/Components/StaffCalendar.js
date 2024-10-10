@@ -12,7 +12,7 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
   const [bookingsOnSelectedDate, setBookingsOnSelectedDate] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { bookings, dispatch } = useBookingsContext()
+  const { dispatch } = useBookingsContext()
   const { user } = useAuthContext()
 
   useEffect(() => {
@@ -40,8 +40,16 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
         ));
         return bookingDateUTC.getTime() === selectedDateUTC.getTime();
       })
+
+      const bookingsWithUserDetails = await Promise.all(bookedSessionsOnSelectedDate.map(async (booking) => {
+        const userResponse = await fetch(`/api/user/${booking.user_id}`, {
+          headers: { 'Authorization': `Bearer ${user.token}`}
+        })
+        const userDetails = await userResponse.json()
+        return { ...booking, userDetails }
+      }))
       
-      setBookingsOnSelectedDate(bookedSessionsOnSelectedDate)
+      setBookingsOnSelectedDate(bookingsWithUserDetails)
       setLoading(false)
     }
 
@@ -74,59 +82,45 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
           prevBookings.filter(booking => booking._id !== id)
         );
     }
-};
-
-  // Helper function to format the date
-  const formatDate = (isoString) => {
-    const date = new Date(isoString);
-    return date.toLocaleDateString(undefined, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
   };
 
   return (
-    <div className="calendar-container">
-      <Calendar
-        onChange={handleDateChange}
-        value={date}
-        view="month"
-      />
-      {date ? <h3>Bookings for {date.toDateString()}:</h3> : <h4>No date selected</h4>}
-      {loading ? (
-        <div>Loading bookings...</div>
-      ) : date ? (
-        bookingsOnSelectedDate.length === 0 ? (
-          <div>No booked sessions</div>
-        ) : (
-          <ul>
-            {bookingsOnSelectedDate.map((booking, index) => (
-              <div key={booking._id} className="booking-item">
-              <h4>Session {index + 1}</h4>
-              <div className="booking-details">
-                  <p> <strong>Details:</strong> {booking.details} </p>
-                  <p className='date'> <strong>Date:</strong> {formatDate(booking.date)} </p>
-                  <p className='time'> <strong>Time:</strong> {booking.time} </p>
+      <div className="calendar-container">
+        <Calendar
+          onChange={handleDateChange}
+          value={date}
+          view="month"
+        />
+        {date ? <h3>Bookings for {date.toDateString()}:</h3> : <h4>No date selected</h4>}
+        {loading ? (
+          <div>Loading bookings...</div>
+        ) : date ? (
+          bookingsOnSelectedDate.length === 0 ? (
+            <div>No booked sessions</div>
+          ) : (
+            <ul>
+              {bookingsOnSelectedDate.map((booking, index) => (
+                <div key={booking._id} className="booking-item">
+                <h4>Session {index + 1}</h4>
+                <div className="booking-details">
+                    <p> <strong>Details:</strong> {booking.details} </p>
+                    <p className='time'> <strong>Time:</strong> {booking.time} </p>
+                    <p className='user-id'> <strong>Name:</strong> {booking.userDetails.firstname} {booking.userDetails.lastname} </p>
+                    <p className='user-id'> <strong>Email:</strong> {booking.userDetails.email} </p>
+
+                </div>
+                {/* Delete Button */}
+                <button onClick={() => handleDelete(booking._id)} className="delete-button">
+                    <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
+                    Delete
+                </button>
               </div>
-              {/* Delete Button */}
-              <button onClick={() => handleDelete(booking._id)} className="delete-button">
-                  <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
-                  Delete
-              </button>
-            </div>
-              
-              /*<li key={booking._id} >
-                <p>Time: {booking.time}</p>
-                <p>Details: {booking.details}</p>
-                <p>User_id: {booking.user_id}</p>
-              </li>*/
-            ))}
-          </ul>
-        )) : (
-        <div></div>
-        )}
-    </div>
+              ))}
+            </ul>
+          )) : (
+          <div></div>
+          )}
+      </div>
   );
 };
 

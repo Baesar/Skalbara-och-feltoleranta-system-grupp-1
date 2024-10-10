@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import CalendarComponent from '../Components/Calendar';
 import AppointmentForm from '../Components/AppointmentForm';
+import '../Components/WebsiteStyle.css'; 
+
 
 function Userpage() {
   // State for selected date, initially set to null

@@ -1,6 +1,7 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const sendEmail = require('../controllers/mailController')
+const mongoose = require('mongoose')
 
 // Function to generate a json web token for a given id
 const createToken = (_id) => {
@@ -47,4 +48,46 @@ const signUpUser = async (req, res) => {
     }
 }
 
-module.exports = { signInUser, signUpUser }
+const getUsers = async (req, res) => {
+    try {
+        // Fetch all users where the role is not 'admin'
+        const users = await User.find({ role: { $ne: 'admin' } });
+        res.status(200).json(users); // Send back the users as a response
+    } catch (error) {
+        res.status(500).json({ message: error.message }); // Handle error
+    }
+};
+
+const getUser = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    const user = await User.findById(id)
+
+    if (!user) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    res.status(200).json(user)
+};
+
+const deleteUser = async (req, res ) => {
+    const {id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.Status(404).json({error : 'no such user'})
+    }
+
+    const user = await User.findOneAndDelete({_id: id})
+
+    if (!user) {
+        return res.status(404).json({error: 'np such user'})
+    }
+
+    res.status(200).json(user)
+    
+}
+module.exports = { signInUser, signUpUser, getUsers, getUser, deleteUser }
