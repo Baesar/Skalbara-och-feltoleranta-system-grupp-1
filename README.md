@@ -1,5 +1,6 @@
 # Grupp 2 - GetBetter
-![en snäll katt](https://github.com/user-attachments/assets/42404654-73d5-4378-bf35-efa45c6292a9)
+![en snäll katt](https://github.com/user-attachments/assets/033459e3-9ca0-4a9f-8568-793c6bce079c)
+
 
 
 - [Participants](#participants)
