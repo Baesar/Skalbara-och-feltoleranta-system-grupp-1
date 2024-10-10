@@ -82,7 +82,8 @@ In the *My Page*, you can view the details of your account, like *Name*, *Email*
 The **Admin** is an account for managing users (both **Members** and **Staff**). **Admin** can access the *Admin Page* via the *Create Users* button and the *My Page* through the *My Page* button.
 
 ### *Admin Page*
-In the *Admin Page*, you have two interfaces. The first one is where you can create new users. The second interface is found by clicking on the *List of Users* link. ![List of Users](https://github.com/user-attachments/assets/f8ed5c97-d1f1-492e-b3b4-7d3f0077bd4b)
+In the *Admin Page*, you have two interfaces. The first one is where you can create new users. The second interface is found by clicking on the *List of Users* link.   
+![List of Users](https://github.com/user-attachments/assets/f8ed5c97-d1f1-492e-b3b4-7d3f0077bd4b)
 Once there, you can view all existing users (except **Admin**). You can also delete users there. When a user is deleted, so is all bookings made by that user. 
 
 ### *My Page*
