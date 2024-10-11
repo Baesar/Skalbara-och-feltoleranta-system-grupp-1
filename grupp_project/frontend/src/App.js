@@ -19,7 +19,6 @@ import Confirmation from './Components/Confirmation';
 
 // Here we import components (model)
 import Navbar from './Components/Navbar';
-import Sidebar from './Components/Sidebar';
 
 function App() {
   const { user } = useAuthContext()
@@ -41,7 +40,6 @@ function App() {
             <Route path = "/AdminList" element={user ? (user.role === 'admin' ? <AdminList/> : <NavigateAppUsage />) : <Navigate to="/SignIn"/>}/>
             <Route path="/confirmation" element={<Confirmation />}/>
           </Routes>
-          <Sidebar/>
         </div>
       </div>
     </Router>

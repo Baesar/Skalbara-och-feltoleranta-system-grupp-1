@@ -67,10 +67,10 @@ const AdminList = () => {
             .includes(staffSearch.toLowerCase())
     )
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (userToBeDeleted) => {
         if (!user) return;
 
-        const response = await fetch(`/api/user/${id}`, {
+        const response = await fetch(`/api/user/${userToBeDeleted._id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
@@ -78,7 +78,25 @@ const AdminList = () => {
         });
 
         if (response.ok) {
-            dispatch({ type: 'DELETE_USER', payload: id });
+            dispatch({ type: 'DELETE_USER', payload: userToBeDeleted._id });
+
+            const bookingsResponse = await fetch('api/bookings/all', {
+                headers: {'Authorization': `Bearer ${user.token}`}
+            })
+            const json = await bookingsResponse.json()
+
+            const bookingsOfUser = json.filter((booking) => (
+                booking.user_id === userToBeDeleted._id
+            ))
+
+            await Promise.all(bookingsOfUser.map(async (booking) => {
+                await fetch(`/api/bookings/${booking._id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
+                })
+            }))
         }
     };
 
@@ -106,7 +124,7 @@ const AdminList = () => {
                                     <p>Email: {aUser.email}</p>
                                     <p>ID: {aUser._id}</p>
                                 </div>
-                                <button onClick={() => handleDelete(aUser._id)} className="delete-button">
+                                <button onClick={() => handleDelete(aUser)} className="delete-button">
                                     <FontAwesomeIcon icon={faTrash} /> {/* Trash can icon */}
                                     Delete
                                 </button>
