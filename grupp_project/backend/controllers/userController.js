@@ -103,6 +103,5 @@ const deleteUser = async (req, res ) => {
     }
 
     res.status(200).json(user)
-    
 }
 module.exports = { signInUser, signUpUser, getUsers, getUser, createUser, deleteUser }
