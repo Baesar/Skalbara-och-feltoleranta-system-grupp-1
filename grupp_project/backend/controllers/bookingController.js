@@ -1,5 +1,6 @@
 const Booking = require('../models/bookingModel')
 const mongoose = require('mongoose')
+const logger = require('../middleware/logger')
 
 // Get all bookings of a certain user
 const getBookings = async (req, res) => {
@@ -54,8 +55,10 @@ const createBooking = async (req, res) => {
     try {
         const user_id = req.user._id
         const booking = await Booking.create({date, time, details, user_id})
+        logger.info(`User ${user_id} booked a slot on ${date} at ${time}`)
         res.status(200).json(booking)
     } catch (error) {
+        logger.error(`Booking failed for user ${req.user ? req.user._id : 'unknown'}: ${error.message}`)
         res.status(400).json({error: error.message})
     }
 }
@@ -74,14 +77,17 @@ const deleteBooking = async (req, res) => {
         return res.status(404).json({error: 'No such booking'})
     }
 
+    logger.info(`User ${req.user._id} deleted booking ${id}`)
+
     res.status(200).json(booking)
 }
 
-// Update a workout
+// Update a booking
 const updateBooking = async (req, res) => {
     const { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
+        logger.error(`User ${req.user._id} failed updated booking ${id}`)
         return res.status(404).json({error: 'No such booking'})
     }
 
@@ -90,9 +96,11 @@ const updateBooking = async (req, res) => {
     })
 
     if (!booking) {
+        logger.error(`User ${req.user._id} failed updated booking ${id}`)
         return res.status(404).json({error: 'No such booking'})
     }
 
+    logger.info(`User ${req.user._id} updated booking ${id}`)
     res.status(200).json(booking)
 }
 
