@@ -2,6 +2,7 @@ const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const sendEmail = require('../controllers/mailController')
 const mongoose = require('mongoose')
+const logger = require('../middleware/logger')
 
 // Function to generate a json web token for a given id
 const createToken = (_id) => {
@@ -23,8 +24,10 @@ const signInUser = async (req, res) => {
         // create a token
         const token = createToken(user._id)
 
+        logger.info(`User ${user._id} signed in`)
         res.status(200).json({firstname, lastname, email, role, token})
     } catch (error) {
+        logger.error(`User failed to sign in. Attemped email: ${email ? email : 'no email'}`)
         res.status(400).json({error: error.message})
     }
 }
@@ -42,8 +45,10 @@ const signUpUser = async (req, res) => {
         // Send a mail to the newly signed up user
         await sendEmail(email, "Welcome to GetBetter!", "We are happy")
 
+        logger.info(`User ${user._id} signed up to GetBetter`)
         res.status(200).json({firstname, lastname, email, role, token})
     } catch (error) {
+        logger.error(`User failed to sign up. Attempted email: ${email ? email : 'no email'}`)
         res.status(400).json({error: error.message})
     }
 }
@@ -83,8 +88,10 @@ const createUser = async (req, res) => {
         // Send a mail to the newly signed up user
         await sendEmail(email, "Welcome to GetBetter!", "We are happy")
 
+        logger.info(`User ${user._id} created by admin`)
         res.status(200).json({firstname, lastname, email, role})
     } catch (error) {
+        logger.error(`Admin failed to create user`)
         res.status(400).json({error: error.message})
     }
 }
@@ -93,15 +100,18 @@ const deleteUser = async (req, res ) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
+        logger.error(`Admin tried to deleted non-existent user`)
         return res.Status(404).json({error : 'no such user'})
     }
 
     const user = await User.findOneAndDelete({_id: id})
 
     if (!user) {
-        return res.status(404).json({error: 'np such user'})
+        logger.error(`Admin tried to deleted non-existent user`)
+        return res.status(404).json({error: 'no such user'})
     }
 
+    logger.info(`User ${user._id} deleted by admin`)
     res.status(200).json(user)
 }
 module.exports = { signInUser, signUpUser, getUsers, getUser, createUser, deleteUser }
