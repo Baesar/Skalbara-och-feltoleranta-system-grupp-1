@@ -1,8 +1,8 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
-const sendEmail = require('../controllers/mailController')
+const sendEmail = require('./mailController.js')
 const mongoose = require('mongoose')
-const logger = require('../middleware/logger')
+const logger = require('../../common/logger')
 
 // Function to generate a json web token for a given id
 const createToken = (_id) => {

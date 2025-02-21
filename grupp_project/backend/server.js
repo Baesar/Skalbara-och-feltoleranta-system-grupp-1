@@ -6,7 +6,6 @@ const userRoutes = require('./routes/user.js')
 
 const PORT = process.env.PORT;
 
-
 // Express app
 const app = express()
 
