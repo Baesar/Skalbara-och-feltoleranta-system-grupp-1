@@ -13,6 +13,8 @@ const createToken = (_id) => {
 const signInUser = async (req, res) => {
     const { email, password } = req.body
 
+    console.log(`signInUser() called with email: ${email}`);
+
     try {
         const user = await User.signin(email, password)
 
@@ -20,13 +22,15 @@ const signInUser = async (req, res) => {
         const lastname = user.lastname
         const role = user.role
 
-
         // create a token
         const token = createToken(user._id)
+
+        console.log(`User signed in successfully: ${email}`);
 
         logger.info(`User ${user._id} signed in`)
         res.status(200).json({firstname, lastname, email, role, token})
     } catch (error) {
+        console.error(`Sign-in failed for ${email}. Error: ${error.message}`);
         logger.error(`User failed to sign in. Attemped email: ${email ? email : 'no email'}`)
         res.status(400).json({error: error.message})
     }
