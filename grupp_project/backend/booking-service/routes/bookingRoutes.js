@@ -8,12 +8,7 @@ const {
     updateBooking
 } = require('../controllers/bookingController')
 
-//const requireAuth = require('../middleware/requireAuth')
-
 const router = express.Router();
-
-// Require authentication for all booking routes
-//router.use(requireAuth)
 
 // GET all bookings of a certain user
 router.get('/', getBookings);

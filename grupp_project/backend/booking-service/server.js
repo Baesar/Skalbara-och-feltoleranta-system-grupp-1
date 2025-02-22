@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api/bookings', bookingRoutes)
+app.use('/api/booking', bookingRoutes)
 
 // Connect to Booking Database
 mongoose.connect(MONGO_URI)

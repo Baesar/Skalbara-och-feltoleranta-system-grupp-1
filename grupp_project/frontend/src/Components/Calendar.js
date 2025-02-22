@@ -23,7 +23,7 @@ const CalendarComponent = ({ onDateSelect, onTimeSelect }) => {
 
   
   const getBookedSessions = useCallback(async () => {
-    const response = await fetch('api/bookings/all', {
+    const response = await fetch('api/booking/all', {
       headers: { Authorization: `Bearer ${user.token}` },
     });
     const json = await response.json();

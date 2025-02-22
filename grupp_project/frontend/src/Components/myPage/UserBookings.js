@@ -19,7 +19,7 @@ const UserBookings = () => {
 
     useEffect(() => {
         const fetchBookings = async () => {
-            const response = await fetch('/api/bookings', {
+            const response = await fetch('/api/booking', {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 },
@@ -39,7 +39,7 @@ const UserBookings = () => {
     const handleDelete = async (id) => {
         if (!user) return;
 
-        const response = await fetch(`/api/bookings/${id}`, {
+        const response = await fetch(`/api/booking/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`

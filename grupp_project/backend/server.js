@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use('/api/bookings', bookingRoutes)
+app.use('/api/booking', bookingRoutes)
 app.use('/api/user', userRoutes)
 
 // Connect to database

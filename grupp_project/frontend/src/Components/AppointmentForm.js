@@ -42,7 +42,7 @@ const AppointmentForm = ({ selectedDate, selectedTime, onBookAppointment, onCanc
 
     // Send POST request to create a new booking
 
-    const response = await fetch('/api/bookings/', {
+    const response = await fetch('/api/booking', {
       method: 'POST',
       body: JSON.stringify(appointmentData),
       headers: {

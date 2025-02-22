@@ -80,7 +80,7 @@ const AdminList = () => {
         if (response.ok) {
             dispatch({ type: 'DELETE_USER', payload: userToBeDeleted._id });
 
-            const bookingsResponse = await fetch('api/bookings/all', {
+            const bookingsResponse = await fetch('api/booking/all', {
                 headers: {'Authorization': `Bearer ${user.token}`}
             })
             const json = await bookingsResponse.json()
@@ -90,7 +90,7 @@ const AdminList = () => {
             ))
 
             await Promise.all(bookingsOfUser.map(async (booking) => {
-                await fetch(`/api/bookings/${booking._id}`, {
+                await fetch(`/api/booking/${booking._id}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${user.token}`
