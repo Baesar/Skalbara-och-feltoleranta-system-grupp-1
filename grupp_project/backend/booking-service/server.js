@@ -12,12 +12,21 @@ app.use(express.json())
 
 // Middleware
 app.use((req, res, next) => {
-    console.log(req.path, req.method);
-    next();
-});
+    console.log(`Booking-Service Received: ${req.method} ${req.path}`)
+    next()
+})
+
+app.use((req, res, next) => {
+    const userId = req.headers['x-user-id']
+    console.log('Booking-Service received x-user-id:', userId)
+    if (userId) {
+        req.user = { _id: userId }
+    }
+    next()
+})
 
 // Routes
-app.use('/api/booking', bookingRoutes)
+app.use('/', bookingRoutes)
 
 // Connect to Booking Database
 mongoose.connect(MONGO_URI)

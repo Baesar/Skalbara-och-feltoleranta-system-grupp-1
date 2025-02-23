@@ -15,6 +15,7 @@ const requireAuth = (req, res, next) => {
     try {
         const {_id} = jwt.verify(token, process.env.SECRET)
         req.user = { _id }
+        console.log('requireAuth set req.user:', req.user);
         next()
 
     } catch (error) {

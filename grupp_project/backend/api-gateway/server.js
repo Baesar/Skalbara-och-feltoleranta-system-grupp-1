@@ -13,19 +13,13 @@ app.use((req, res, next) => {
 // Proxy middleware for user-service
 const userProxyMiddleware = createProxyMiddleware({
     target: 'http://localhost:5001',
-    changeOrigin: true,
-    logLevel: "debug",  // 🔥 Add this for better debugging
-    pathRewrite: { '^/api/user': '' },  
-    onProxyReq: (proxyReq, req, res) => {
-        console.log(`Proxying request to: ${proxyReq.path}`);
-    }
+    changeOrigin: true
 })
 
 // Proxy middleware for booking-service
 const bookingProxyMiddleware = createProxyMiddleware({
     target: 'http://localhost:5002',
-    changeOrigin: true,
-    pathRewrite: { '^/api/booking': '' }
+    changeOrigin: true
 })
 
 // User routes
@@ -34,7 +28,16 @@ const bookingProxyMiddleware = createProxyMiddleware({
 app.use('/api/user', userProxyMiddleware)
 
 // Booking routes
-app.use('/api/booking', requireAuth, bookingProxyMiddleware)
+app.use('/api/booking', requireAuth, 
+    (req, res, next) => {
+        if (req.user) {
+            req.headers['x-user-id'] = req.user._id
+            console.log('Gateway set x-user-id header:', req.headers['x-user-id'])
+        }
+        next()
+    },
+    bookingProxyMiddleware
+)
 
 // Start API Gateway
 const PORT = process.env.PORT
