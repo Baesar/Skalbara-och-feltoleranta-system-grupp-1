@@ -1,6 +1,6 @@
 const Booking = require('../models/bookingModel')
 const mongoose = require('mongoose')
-const logger = require('../../common/logger')
+const logger = require('../middleware/logger')
 
 // Get all bookings of a certain user
 const getBookings = async (req, res) => {
