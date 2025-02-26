@@ -1,5 +1,5 @@
 # Use Node.js Alpine for a smaller image
-FROM node:19.9.0-alpine
+FROM node:18
 
 # Set the working directory
 WORKDIR /app
@@ -10,6 +10,8 @@ RUN npm install --omit=dev
 
 # Copy application source code
 COPY . .
+
+EXPOSE 5000
 
 # Set the default command to start the service
 CMD ["node", "server.js"]

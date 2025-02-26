@@ -2,11 +2,14 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 const requireAuth = (req, res, next) => {
+    console.log("requireAuth Middleware Triggered")
 
     // Verify authentication
     const { authorization } = req.headers
+    console.log("🔹 Authorization Header:", authorization)
 
     if (!authorization) {
+        console.log("❌ No Authorization Header")
         return res.status(401).json({error: 'Authorization token required'})
     }
 
