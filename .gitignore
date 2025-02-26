@@ -17,6 +17,10 @@ Icon
 
 # Terraform
 ".terraform/"
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform/
+
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
