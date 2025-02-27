@@ -1,11 +1,9 @@
 const express = require('express')
-const { createProxyMiddleware } = require('http-proxy-middleware')
+const { createProxyMiddleware, fixRequestBody } = require('http-proxy-middleware')
 const requireAuth = require('./middleware/requireAuth')
 
 // Express app
 const app = express()
-
-app.use(express.json())
 
 app.use((req, res, next) => {
     console.log(`Incoming Request: ${req.method} ${req.path}`)
@@ -19,7 +17,8 @@ app.use('/api/user', (req, res, next) => {
 }, createProxyMiddleware({
     target: 'http://user-service:5001/',
     changeOrigin: true,
-    pathRewrite: { '^/api/user': '/' }
+    pathRewrite: { '^/api/user': '/' },
+    onProxyReq: fixRequestBody
 }))
 
 // Booking routes
@@ -28,10 +27,10 @@ app.use('/api/booking', (req, res, next) => {
             console.log(" User Authenticated:", req.user)
 
             if (req.user && req.user._id) {
-                req.headers['x-user-id'] = req.user._id;
-                console.log(`Added x-user-id Header: ${req.user._id}`);
+                req.headers['x-user-id'] = req.user._id
+                console.log(`Added x-user-id Header: ${req.user._id}`)
             } else {
-                console.log("No User ID Found!");
+                console.log("No User ID Found!")
             }
 
             next()
@@ -51,6 +50,8 @@ app.use('/api/booking', (req, res, next) => {
         }
     })
 )
+
+app.use(express.json())
 
 // Start API Gateway
 const PORT = process.env.PORT
