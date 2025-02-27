@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-service
+  labels:
+    app: booking-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: booking-service
+  template:
+    metadata:
+      labels:
+        app: booking-service
+    spec:
+      containers:
+        - name: booking-service
+          image: getbetter.azurecr.io/grupp_project-booking-service:latest
+          ports:
+            - containerPort: 5002
+          envFrom:
+            - configMapRef:
+                name: booking-service-config
+            - secretRef:
+                name: booking-service-secret
+          resources:
+            requests:
+              cpu: 128m
+              memory: 128Mi
+            limits:
+              cpu: 256m
+              memory: 256Mi
