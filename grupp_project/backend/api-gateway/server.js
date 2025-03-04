@@ -15,7 +15,7 @@ app.use('/api/user', (req, res, next) => {
     console.log("Forwarding request to User Service")
     next()
 }, createProxyMiddleware({
-    target: 'http://user-service:5001/',
+    target: 'http://user-service.default.svc.cluster.local:80/',
     changeOrigin: true,
     pathRewrite: { '^/api/user': '/' },
     onProxyReq: fixRequestBody
@@ -36,7 +36,7 @@ app.use('/api/booking', (req, res, next) => {
             next()
         })
     }, createProxyMiddleware({
-        target: 'http://booking-service:5002',
+        target: 'http://booking-service.default.svc.cluster.local:80/',
         changeOrigin: true,
         pathRewrite: { '^/api/booking': '/' },
         onProxyReq: (proxyReq, req, res) => {
