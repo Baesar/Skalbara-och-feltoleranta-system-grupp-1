@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     next()
 })
 
-// Routes
+
 app.use('/', bookingRoutes)
 
 // Connect to Booking Database
