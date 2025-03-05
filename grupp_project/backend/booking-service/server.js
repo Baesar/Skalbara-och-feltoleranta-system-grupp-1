@@ -12,8 +12,8 @@ const logger = createLogger({
         format.json()
     ),
     transports: [
-        new transports.Console(),
-        new transports.File({ filename: 'logs/booking-service.log' })
+        new transports.Console(),  // Logs to stdout
+        new transports.File({ filename: 'logs/booking-service.log' }) // Saves logs to file
     ]
 });
 
@@ -24,31 +24,43 @@ const MONGO_URI = process.env.BOOKING_ATLAS_URI;
 const app = express();
 app.use(express.json());
 
-// Middleware
+// Middleware to log incoming requests
 app.use((req, res, next) => {
-    logger.info(`Booking-Service Received: ${req.method} ${req.path}`);
+    logger.info(`Booking-Service Received: ${req.method} ${req.path}`, { headers: req.headers });
     next();
 });
 
+// Middleware to extract user ID
 app.use((req, res, next) => {
     const userId = req.headers['x-user-id'];
-    logger.info('Booking-Service received x-user-id:', { userId });
+    
     if (userId) {
         req.user = { _id: userId };
+        logger.info('Booking-Service received x-user-id', { userId });
+    } else {
+        logger.warn('No x-user-id header found in request');
     }
+    
     next();
 });
 
 // Routes
 app.use('/', bookingRoutes);
 
-// Connect to Booking Database
-mongoose.connect(MONGO_URI)
+// Global Error Handling Middleware
+app.use((err, req, res, next) => {
+    logger.error('Unhandled server error', { error: err.message });
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+
+// Connect to MongoDB
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         app.listen(PORT, () => {
             logger.info(`Booking Service running on port ${PORT}`);
         });
     })
     .catch(error => {
-        logger.error('Database connection error:', { error });
+        logger.error('Database connection error', { error: error.message });
+        process.exit(1); // Exit process if DB connection fails
     });
