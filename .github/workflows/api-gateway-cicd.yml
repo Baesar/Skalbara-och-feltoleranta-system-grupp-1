@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'grupp_project/backend/api-gateway/**'
-
+      
 jobs:
   build-and-deploy:
     name: Build, Push & Deploy API Gateway
