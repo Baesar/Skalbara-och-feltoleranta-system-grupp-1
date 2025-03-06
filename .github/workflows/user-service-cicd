@@ -1,0 +1,76 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'grupp_project/backend/user-service/**'
+      
+jobs:
+  build-and-deploy:
+    name: Build, Push & Deploy User Service
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'grupp_project/backend/user-service'
+
+    env:
+      VERSION: ${{ github.sha }}
+      CONTAINER_REGISTRY_LOGIN_SERVER: ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}
+      CONTAINER_REGISTRY_USERNAME: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+
+    steps:
+      - name:  Checkout Repository
+        uses: actions/checkout@v4
+
+      - name:  Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 19.9.0
+          cache: 'npm'
+          cache-dependency-path: 'grupp_project/backend/user-service/package-lock.json'
+
+      - name:  Install Dependencies
+        run: npm install
+
+      - name:  Build Docker Image
+        run: |
+          docker build -t $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:$VERSION --file ./Dockerfile .
+          docker tag $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:$VERSION $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:latest
+
+      - name:  Push Docker Image
+        run: |
+          echo $CONTAINER_REGISTRY_PASSWORD | docker login $CONTAINER_REGISTRY_LOGIN_SERVER --username $CONTAINER_REGISTRY_USERNAME --password-stdin
+          docker push $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:$VERSION
+          docker push $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:latest
+
+      - name:  Setup Kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: v1.24.2
+
+      - name: Authenticate with Kubernetes
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig.yaml
+          export KUBECONFIG=kubeconfig.yaml
+          kubectl config view
+
+      - name:  Install envsubst
+        run: sudo apt-get update && sudo apt-get install -y gettext-base
+
+      - name: Deploy ConfigMap
+        run: envsubst < grupp_project/k8s-manifests/configmap-user-service.yaml | kubectl apply -f -
+
+      - name: Deploy Secret
+        run: envsubst < grupp_project/k8s-manifests/secret-user-service.yaml | kubectl apply -f -
+
+      - name:  Deploy Service
+        run: envsubst < grupp_project/k8s-manifests/user-service-service.yaml | kubectl apply -f -
+
+      - name:  Deploy Deployment
+        run: envsubst < grupp_project/k8s-manifests/user-service-deployment.yaml | kubectl apply -f -
+
+      - name:  Verify Deployment
+        run: kubectl rollout status deployment/user-service
