@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: API Gateway CI/CD Pipeline
 
 on:
   push:
