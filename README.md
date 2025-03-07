@@ -11,7 +11,6 @@
 # Participants:<br>
 Ahmed Hussein<br>
 Julius Norén<br>
-Darina Larsen<br>
 Rama Muharam
 
 # Preparations:
