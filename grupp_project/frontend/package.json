@@ -1,7 +1,7 @@
 {
   "name": "grupp_project",
   "version": "0.1.0",
-  "proxy": "http://9.163.201.149",
+  "proxy": "http://50.85.101.88",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",

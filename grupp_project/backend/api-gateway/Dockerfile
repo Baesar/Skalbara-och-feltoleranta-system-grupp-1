@@ -11,7 +11,7 @@ RUN npm install --omit=dev
 # Copy application source code
 COPY . .
 
-EXPOSE 5000
+EXPOSE 80
 
 # Set the default command to start the service
 CMD ["node", "server.js"]

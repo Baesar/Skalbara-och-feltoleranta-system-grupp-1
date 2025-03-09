@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: booking-service-config
 data:
-  PORT: "5002"
+  PORT: "80"
   NODE_ENV: "production"

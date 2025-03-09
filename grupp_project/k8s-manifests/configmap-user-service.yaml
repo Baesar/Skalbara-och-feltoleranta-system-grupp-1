@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: user-service-config
 data:
-  PORT: "5001"
+  PORT: "80"
   NODE_ENV: "production"
