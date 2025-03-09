@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
         - name: booking-service
-          image: getbetter.azurecr.io/grupp_project-booking-service:latest
+          image: getbetter.azurecr.io/booking-service:latest
           ports:
-            - containerPort: 5002
+            - containerPort: 80
           envFrom:
             - configMapRef:
                 name: booking-service-config

@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: getbetter.azurecr.io/grupp_project-user-service:latest
+          image: getbetter.azurecr.io/user-service:latest
           ports:
-            - containerPort: 5001
+            - containerPort: 80
           envFrom:
             - configMapRef:
                 name: user-service-config
