@@ -4,47 +4,78 @@
 
 
 - [Participants](#participants)
-- [Preparations](#preparations)
+- [Setup](#setup)
 - [Run the application](#run-the-application)
 - [The Application](#the-application)
 
 # Participants:<br>
 Ahmed Hussein<br>
 Julius Norén<br>
-Darina Larsen<br>
 Rama Muharam
 
-# Preparations:
-Firstly, you need to download the project. Then, inside the 'backend' directory, you need to create a file called ".env".  
-Fill the file with this code:
+# Setup:
+## *.env* files
+Inside the 'backend' directory, you need to create a *.env* file inside these three folders:
 ```
+##api-gateway
 PORT=5000
-ATLAS_URI=mongodb+srv://huah21vn:hr7896DWnuQhKEL@web-grupp-2-db.bhfmb.mongodb.net/?retryWrites=true&w=majority&appName=Web-grupp-2-db
 SECRET=baesargreaterthanashbenlolo
-EMAIL_ADDRESS=information.getbetter@gmail.com
-EMAIL_PASSWORD=ytkfipciftkduijx
 ```
-![.env file](https://github.com/user-attachments/assets/b82bffdb-5c91-4921-be11-3a54cd49bfa6)
+```
+##user-service
+PORT=5001 USER_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.njn74.mongodb.net/User?retryWrites=true&w=majority&appName=Cluster0 SECRET=baesargreaterthanashbenlolo EMAIL_ADDRESS=information.getbetter@gmail.com EMAIL_PASSWORD=ytkfipciftkduijx
+```
+```
+##booking-service
+PORT=5002 BOOKING_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.njn74.mongodb.net/Booking?retryWrites=true&w=majority&appName=Cluster0
+```
+![.env files](https://cdn.discordapp.com/attachments/1221090555405008978/1344687263065571501/image.png?ex=67cfa8da&is=67ce575a&hm=65c03dd4489c8daa29da154193d94850fcb294265d998e89a79e10fadde1e5f0&)
 
+## Install dependencies
+Inside the three previous folders and also the 'frontend' directory, run `npm install` to install all of the dependencies
 
-# Run the application:
-In order to start the application you can either [use the .bat files](#using-the-bat-files) or [start it manually](#manual-start).
+## Login to Azure and Docker
+You need to login to Azure, run `az login -o none` 
+Also, login to docker, run `docker login getbetter.azurecr.io -u getbetter -p CONTAINER_REGISTRY_PASSWORD`,
+replace CONTAINER_REGISTRY_PASSWORD with the Password that appears after running `az acr credential show -n getbetter -o table`
 
-## Using the .bat files
-1. Open the install.bat file. This will install all of the dependencies for both the frontend and the backend.
-2. Open the run.bat file. This will start the backend server and the frontend application.
+You also need to have Docker Desktop running, so start it.
 
-## Manual start
-1. Open two command prompt terminals, one for the backend direcetory and one for the frontend directory.
-2. Run `npm install` in both the backend and the frontend.
+## Terraform
+Inside the 'terraform' directory, run `terraform init`.
+Then, run `terraform apply -auto-approve`.
 
-3. Inside the backend directory, run `npm run dev`, this will start the backend server. It should look like this and say "server started on port 5000".
-![Backend server started](https://github.com/user-attachments/assets/b057c2a3-fb2a-4e41-9bce-f7e89fa3475f)
+## Connect to AKS
+Run
+`az aks get-credentials --resource-group YOUR_RESOURCE_GROUP --name YOUR_AKS_CLUSTER`,
+replace `YOUR_RESOURCE_GROUP` and `YOUR_AKS_CLUSTER` with `getbetter` or whatever value the "app_name" terraform variable is set to.
 
-4. Inside the frontend directory, run `npm start`, this will start the application. At first, it will display some errors, but after a short while it should look like this:  
+# Run the applicaiton:
+Now to running the application.
+
+### Build & Start Docker containers
+Inside the 'grupp_project' directory, run 
+`docker build -t getbetter.azurecr.io/api-gateway:latest ./backend/api-gateway`
+`docker build -t getbetter.azurecr.io/user-serivce:latest ./backend/user-service`
+`docker build -t getbetter.azurecr.io/booking-service:latest ./backend/booking-service`, 
+this will build the Docker images.
+
+Then, run
+`docker push getbetter.azurecr.io/api-gateway:latest`
+`docker push getbetter.azurecr.io/user-service:latest`
+`docker push getbetter.azurecr.io/booking-service:latest`,
+this will push the images to Docker.
+
+### Apply to Kubernetes
+Run `kubectl apply -f k8s-manifests/`,
+this will start the microservices on Kubernetes.
+
+### Start frontend
+Now everything is up and running.
+All you need to do is run `npm start` inside the 'frontend' directory, this will start the application. At first, it will display some errors, but after a short while it should look like this:  
    ![Frontend application started](https://github.com/user-attachments/assets/e9a917a4-5ffa-4907-90e3-6bd549fe1a3b)
 
-6. Book your therapy <3
+You can now book your therapy <3
 
 # The Application
 For unregistered users, only the *Home* page is visible.
