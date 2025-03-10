@@ -20,7 +20,7 @@ router.get('/:id', getUser)
 // Create a user
 router.post('/create', createUser)
 
-// delete users
+// delete a user
 router.delete('/:id' , deleteUser)
 
 module.exports = router

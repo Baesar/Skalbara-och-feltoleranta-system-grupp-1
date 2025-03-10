@@ -1,6 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1741617308752,410,Login(post request),200,OK,Thread Group 1-1,text,true,,483,278,1,1,http://50.85.101.88/api/user/signin,410,0,31
-1741617309163,77,Booking(POST request),200,OK,Thread Group 1-1,text,true,,523,573,1,1,http://50.85.101.88/api/booking,77,0,29
-1741617309240,72,Booking(GET request),200,OK,Thread Group 1-1,text,true,,1471,379,1,1,http://50.85.101.88/api/booking,72,0,30
-1741617309313,0,Debug Sampler,200,OK,Thread Group 1-1,text,true,,500,0,1,1,null,0,0,0
-1741617309313,74,Booking(DELETE),200,OK,Thread Group 1-1,text,true,,523,426,1,1,http://50.85.101.88/api/booking/67cef89c6fa4c3d0cc8be992,73,0,29

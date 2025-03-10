@@ -105,14 +105,14 @@ const deleteUser = async (req, res ) => {
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         logger.error(`Admin tried to deleted non-existent user`)
-        return res.Status(404).json({error : 'no such user'})
+        return res.status(404).json({error : 'no such user'})
     }
 
     const user = await User.findOneAndDelete({_id: id})
 
     if (!user) {
         logger.error(`Admin tried to deleted non-existent user`)
-        return res.status(404).json({error: 'no such user'})
+        return res.status(404).json({error: 'No such user'})
     }
 
     logger.info(`User ${user._id} deleted by admin`)
