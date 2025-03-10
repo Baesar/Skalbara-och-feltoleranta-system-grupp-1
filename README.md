@@ -18,16 +18,16 @@ Rama Muharam
 Inside the 'backend' directory, you need to create a *.env* file inside these three folders:
 ```
 ##api-gateway
-PORT=5000
+PORT=80
 SECRET=baesargreaterthanashbenlolo
 ```
 ```
 ##user-service
-PORT=5001 USER_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.njn74.mongodb.net/User?retryWrites=true&w=majority&appName=Cluster0 SECRET=baesargreaterthanashbenlolo EMAIL_ADDRESS=information.getbetter@gmail.com EMAIL_PASSWORD=ytkfipciftkduijx
+PORT=80 USER_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.njn74.mongodb.net/User?retryWrites=true&w=majority&appName=Cluster0 SECRET=baesargreaterthanashbenlolo EMAIL_ADDRESS=information.getbetter@gmail.com EMAIL_PASSWORD=ytkfipciftkduijx
 ```
 ```
 ##booking-service
-PORT=5002 BOOKING_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.njn74.mongodb.net/Booking?retryWrites=true&w=majority&appName=Cluster0
+PORT=80 BOOKING_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.njn74.mongodb.net/Booking?retryWrites=true&w=majority&appName=Cluster0
 ```
 ![.env files](https://cdn.discordapp.com/attachments/1221090555405008978/1344687263065571501/image.png?ex=67cfa8da&is=67ce575a&hm=65c03dd4489c8daa29da154193d94850fcb294265d998e89a79e10fadde1e5f0&)
 
