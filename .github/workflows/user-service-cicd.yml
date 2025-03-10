@@ -22,29 +22,32 @@ jobs:
       CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
 
     steps:
-      - name:  Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name:  Install Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 19.9.0
           cache: 'npm'
           cache-dependency-path: 'grupp_project/backend/user-service/package-lock.json'
 
-      - name:  Install Dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name:  Build Docker Image
+      - name: Run Unit Tests
+        run: npm test
+
+      - name: Build Docker Image
         run: |
           docker build -t $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:$VERSION --file ./Dockerfile .
 
-      - name:  Push Docker Image
+      - name: Push Docker Image
         run: |
           echo $CONTAINER_REGISTRY_PASSWORD | docker login $CONTAINER_REGISTRY_LOGIN_SERVER --username $CONTAINER_REGISTRY_USERNAME --password-stdin
           docker push $CONTAINER_REGISTRY_LOGIN_SERVER/user-service:$VERSION
 
-      - name:  Setup Kubectl
+      - name: Setup Kubectl
         uses: tale/kubectl-action@v1
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
@@ -56,11 +59,11 @@ jobs:
       - name: Deploy Secret
         run: envsubst < ../../k8s-manifests/secret-user-service.yaml | kubectl apply -f -
 
-      - name:  Deploy Service
+      - name: Deploy Service
         run: envsubst < ../../k8s-manifests/user-service-service.yaml | kubectl apply -f -
 
-      - name:  Deploy Deployment
+      - name: Deploy Deployment
         run: envsubst < ../../k8s-manifests/user-service-deployment.yaml | kubectl apply -f -
 
-      - name:  Verify Deployment
+      - name: Verify Deployment
         run: kubectl rollout status deployment/user-service
