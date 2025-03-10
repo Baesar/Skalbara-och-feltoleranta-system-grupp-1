@@ -38,27 +38,17 @@ jobs:
       - name:  Build Docker Image
         run: |
           docker build -t $CONTAINER_REGISTRY_LOGIN_SERVER/booking-service:$VERSION --file ./Dockerfile .
-          docker tag $CONTAINER_REGISTRY_LOGIN_SERVER/booking-service:$VERSION $CONTAINER_REGISTRY_LOGIN_SERVER/booking-service:latest
 
       - name:  Push Docker Image
         run: |
           echo $CONTAINER_REGISTRY_PASSWORD | docker login $CONTAINER_REGISTRY_LOGIN_SERVER --username $CONTAINER_REGISTRY_USERNAME --password-stdin
           docker push $CONTAINER_REGISTRY_LOGIN_SERVER/booking-service:$VERSION
-          docker push $CONTAINER_REGISTRY_LOGIN_SERVER/booking-service:latest
 
       - name:  Setup Kubectl
-        uses: azure/setup-kubectl@v3
+        uses: tale/kubectl-actions@v1
         with:
-          version: v1.24.2
-
-      - name: Authenticate with Kubernetes
-        run: |
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig.yaml
-          export KUBECONFIG=kubeconfig.yaml
-          kubectl config view
-
-      - name:  Install envsubst
-        run: sudo apt-get update && sudo apt-get install -y gettext-base
+          base64-kube-config: ${{ secrets.KUBE_CONFIG }}
+          kubectl-version: v1.24.2
 
       - name: Deploy ConfigMap
         run: envsubst < grupp_project/k8s-manifests/configmap-booking-service.yaml | kubectl apply -f -
