@@ -38,7 +38,6 @@ jobs:
       - name:  Build Docker Image
         run: |
           docker build -t $CONTAINER_REGISTRY_LOGIN_SERVER/api-gateway:$VERSION --file ./Dockerfile .
-          docker tag $CONTAINER_REGISTRY_LOGIN_SERVER/api-gateway:$VERSION $CONTAINER_REGISTRY_LOGIN_SERVER/api-gateway:latest
 
       - name:  Push Docker Image
         run: |
