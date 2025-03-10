@@ -15,12 +15,4 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use((req, res, next) => {
-    const userId = req.headers['x-user-id']
-    if (userId) {
-        req.user = { _id: userId }
-    }
-    next()
-})
-
 module.exports = app
