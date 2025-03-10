@@ -45,7 +45,7 @@ jobs:
           docker push $CONTAINER_REGISTRY_LOGIN_SERVER/booking-service:$VERSION
 
       - name:  Setup Kubectl
-        uses: tale/kubectl-actions@v1
+        uses: tale/kubectl-action@v1
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
           kubectl-version: v1.24.2
