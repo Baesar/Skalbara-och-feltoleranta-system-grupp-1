@@ -18,7 +18,7 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
   useEffect(() => {
     const getBookedSessions = async () => {
       setLoading(true)
-      const response = await fetch('api/bookings/all', {
+      const response = await fetch('api/booking/all', {
         headers: {'Authorization': `Bearer ${user.token}`},
       })
       const json = await response.json()
@@ -67,7 +67,7 @@ const StaffCalendar = ({ onDateSelect, onTimeSelect }) => {
   const handleDelete = async (id) => {
     if (!user) return;
 
-    const response = await fetch(`/api/bookings/${id}`, {
+    const response = await fetch(`/api/booking/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${user.token}`
