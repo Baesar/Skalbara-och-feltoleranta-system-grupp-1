@@ -35,44 +35,49 @@ PORT=80 BOOKING_ATLAS_URI=mongodb+srv://juliusnoren:7BlVXBj7RtvuGtRS@cluster0.nj
 Inside the three previous folders and also the 'frontend' directory, run `npm install` to install all of the dependencies
 
 ## Login to Azure and Docker
-You need to login to Azure, run `az login -o none` 
-Also, login to docker, run `docker login getbetter.azurecr.io -u getbetter -p CONTAINER_REGISTRY_PASSWORD`,
+You need to login to Azure, run `az login -o none` <br>
+Also, login to docker, run <br>
+`docker login getbetter.azurecr.io -u getbetter -p CONTAINER_REGISTRY_PASSWORD`,<br>
 replace CONTAINER_REGISTRY_PASSWORD with the Password that appears after running `az acr credential show -n getbetter -o table`
 
 You also need to have Docker Desktop running, so start it.
 
 ## Terraform
-Inside the 'terraform' directory, run `terraform init`.
+Inside the 'terraform' directory, run `terraform init`.<br>
 Then, run `terraform apply -auto-approve`.
 
 ## Connect to AKS
 Run
-`az aks get-credentials --resource-group YOUR_RESOURCE_GROUP --name YOUR_AKS_CLUSTER`,
+`az aks get-credentials --resource-group YOUR_RESOURCE_GROUP --name YOUR_AKS_CLUSTER`,<br>
 replace `YOUR_RESOURCE_GROUP` and `YOUR_AKS_CLUSTER` with `getbetter` or whatever value the "app_name" terraform variable is set to.
 
 # Run the applicaiton:
 Now to running the application.
 
 ### Build & Start Docker containers
-Inside the 'grupp_project' directory, run 
-`docker build -t getbetter.azurecr.io/api-gateway:latest ./backend/api-gateway`
-`docker build -t getbetter.azurecr.io/user-serivce:latest ./backend/user-service`
-`docker build -t getbetter.azurecr.io/booking-service:latest ./backend/booking-service`, 
+Inside the 'grupp_project' directory, run <br>
+``
+docker build -t getbetter.azurecr.io/api-gateway:latest ./backend/api-gateway
+docker build -t getbetter.azurecr.io/user-serivce:latest ./backend/user-service
+docker build -t getbetter.azurecr.io/booking-service:latest ./backend/booking-service
+`` 
 this will build the Docker images.
 
 Then, run
-`docker push getbetter.azurecr.io/api-gateway:latest`
-`docker push getbetter.azurecr.io/user-service:latest`
-`docker push getbetter.azurecr.io/booking-service:latest`,
+``
+docker push getbetter.azurecr.io/api-gateway:latest
+docker push getbetter.azurecr.io/user-service:latest
+docker push getbetter.azurecr.io/booking-service:latest
+``
 this will push the images to Docker.
 
 ### Apply to Kubernetes
-Run `kubectl apply -f k8s-manifests/`,
+Run `kubectl apply -f k8s-manifests/`,<br>
 this will start the microservices on Kubernetes.
 
 ### Start frontend
-Now everything is up and running.
-All you need to do is run `npm start` inside the 'frontend' directory, this will start the application. At first, it will display some errors, but after a short while it should look like this:  
+Now everything is up and running.<br>
+All you need to do is run `npm start` inside the 'frontend' directory, this will start the application. <br>At first, it will display some errors, but after a short while it should look like this:  
    ![Frontend application started](https://github.com/user-attachments/assets/e9a917a4-5ffa-4907-90e3-6bd549fe1a3b)
 
 You can now book your therapy <3
