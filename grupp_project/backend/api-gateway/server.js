@@ -1,13 +1,10 @@
 const express = require('express')
 const { createProxyServer } = require('http-proxy')
 const requireAuth = require('./middleware/requireAuth')
+const { createLogger, format, transports } = require('winston')
 
 const app = express()
 const proxy = createProxyServer()
-
-// Middleware for logging requests
-
-const { createLogger, format, transports } = require('winston');
 
 // Configure Winston logger
 const logger = createLogger({
@@ -20,8 +17,7 @@ const logger = createLogger({
         new transports.Console(),
         new transports.File({ filename: 'logs/api-gateway.log' }) // Save logs to file
     ]
-});
-
+})
 
 // Simulated startup status
 let isServiceReady = false;
@@ -29,32 +25,32 @@ let isServiceReady = false;
 // Simulate delay before the service is fully ready
 setTimeout(() => {
     isServiceReady = true;
-}, 10000); // 10 seconds delay
+}, 10000) // 10 seconds delay
 
-// 🔹 Startup Probe: Ensures the app has started
+// Startup Probe: Ensures the app has started
 app.get('/startup', (req, res) => {
-    res.status(200).send('Started');
-});
+    res.status(200).send('Started')
+})
 
-// 🔹 Readiness Probe: Ensures the app is ready for traffic
+// Readiness Probe: Ensures the app is ready for traffic
 app.get('/readyz', (req, res) => {
     if (isServiceReady) {
-        res.status(200).send('Ready');
+        res.status(200).send('Ready')
     } else {
-        res.status(503).send('Not Ready');
+        res.status(503).send('Not Ready')
     }
-});
+})
 
-// 🔹 Liveness Probe: Ensures the app is still running
+// Liveness Probe: Ensures the app is still running
 app.get('/healthz', (req, res) => {
-    res.status(200).send('Alive');
-});
+    res.status(200).send('Alive')
+})
 
 // Middleware to log incoming requests
 app.use((req, res, next) => {
-    logger.info(`Incoming Request: ${req.method} ${req.path}`);
-    next();
-});
+    logger.info(`Incoming Request: ${req.method} ${req.path}`)
+    next()
+})
 
 // Forward requests to user-service
 app.use('/api/user', (req, res) => {
@@ -74,9 +70,8 @@ app.use('/api/booking', requireAuth, (req, res) => {
     })
 })
 
-
 // Start API Gateway
-const PORT = process.env.PORT;
+const PORT = process.env.PORT
 app.listen(PORT, () => {
-    logger.info(`API Gateway running on port ${PORT}`);
-});
+    logger.info(`API Gateway running on port ${PORT}`)
+})
