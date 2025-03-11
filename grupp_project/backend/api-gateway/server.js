@@ -76,7 +76,7 @@ app.use('/api/booking', requireAuth, (req, res) => {
 
 
 // Start API Gateway
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     logger.info(`API Gateway running on port ${PORT}`);
 });
