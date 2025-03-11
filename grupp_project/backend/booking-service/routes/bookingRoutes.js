@@ -8,10 +8,10 @@ const {
     updateBooking
 } = require('../controllers/bookingController')
 
-const router = express.Router();
+const router = express.Router()
 
 // GET all bookings of a certain user
-router.get('/', getBookings);
+router.get('/', getBookings)
 
 // GET all bookings
 router.get('/all', getAllBookings)
@@ -28,4 +28,4 @@ router.delete('/:id', deleteBooking)
 // PATCH a booking
 router.patch('/:id', updateBooking)
 
-module.exports = router;
+module.exports = router

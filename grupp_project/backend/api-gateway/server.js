@@ -20,11 +20,11 @@ const logger = createLogger({
 })
 
 // Simulated startup status
-let isServiceReady = false;
+let isServiceReady = false
 
 // Simulate delay before the service is fully ready
 setTimeout(() => {
-    isServiceReady = true;
+    isServiceReady = true
 }, 10000) // 10 seconds delay
 
 // Startup Probe: Ensures the app has started
