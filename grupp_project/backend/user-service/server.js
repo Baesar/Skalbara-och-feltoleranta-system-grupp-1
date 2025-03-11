@@ -1,5 +1,5 @@
 const app = require('./app')
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const PORT = process.env.PORT
 const MONGO_URI = process.env.USER_ATLAS_URI

@@ -26,7 +26,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-});
+})
 
 // Static signin method
 userSchema.statics.signin = async function(email, password) {

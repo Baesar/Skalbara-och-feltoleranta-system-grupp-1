@@ -13,7 +13,7 @@ const createToken = (_id) => {
 const signInUser = async (req, res) => {
     const { email, password } = req.body
 
-    console.log(`signInUser() called with email: ${email}`);
+    console.log(`signInUser() called with email: ${email}`)
 
     try {
         const user = await User.signin(email, password)
@@ -25,12 +25,12 @@ const signInUser = async (req, res) => {
         // create a token
         const token = createToken(user._id)
 
-        console.log(`User signed in successfully: ${email}`);
+        console.log(`User signed in successfully: ${email}`)
 
         logger.info(`User ${user._id} signed in`)
         res.status(200).json({firstname, lastname, email, role, token})
     } catch (error) {
-        console.error(`Sign-in failed for ${email}. Error: ${error.message}`);
+        console.error(`Sign-in failed for ${email}. Error: ${error.message}`)
         logger.error(`User failed to sign in. Attemped email: ${email ? email : 'no email'}`)
         res.status(400).json({error: error.message})
     }
@@ -60,12 +60,12 @@ const signUpUser = async (req, res) => {
 const getUsers = async (req, res) => {
     try {
         // Fetch all users where the role is not 'admin'
-        const users = await User.find({ role: { $ne: 'admin' } });
-        res.status(200).json(users); // Send back the users as a response
+        const users = await User.find({ role: { $ne: 'admin' } })
+        res.status(200).json(users) // Send back the users as a response
     } catch (error) {
-        res.status(500).json({ message: error.message }); // Handle error
+        res.status(500).json({ message: error.message }) // Handle error
     }
-};
+}
 
 const getUser = async (req, res) => {
     const { id } = req.params
@@ -81,7 +81,7 @@ const getUser = async (req, res) => {
     }
 
     res.status(200).json(user)
-};
+}
 
 const createUser = async (req, res) => {
     const { firstname, lastname, email, password, role } = req.body
