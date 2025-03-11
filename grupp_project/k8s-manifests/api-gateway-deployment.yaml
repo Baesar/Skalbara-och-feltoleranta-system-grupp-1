@@ -14,8 +14,8 @@ spec:
       labels:
         app: api-gateway
     spec:
-      imagePullSecrets:
-          - name: acr-secret
+#      imagePullSecrets:
+#          - name: acr-secret
       containers:
         - name: api-gateway
           image: getbetter.azurecr.io/api-gateway:latest
