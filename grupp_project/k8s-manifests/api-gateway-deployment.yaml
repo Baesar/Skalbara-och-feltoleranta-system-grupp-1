@@ -14,8 +14,6 @@ spec:
       labels:
         app: api-gateway
     spec:
-#      imagePullSecrets:
-#          - name: acr-secret
       containers:
         - name: api-gateway
           image: getbetter.azurecr.io/api-gateway:latest
@@ -35,29 +33,29 @@ spec:
               cpu: 256m
               memory: 256Mi
 
-          # 🟢 **Startup Probe: Ensures the app has started**
+          # Startup Probe: Ensures the app has started
           startupProbe:
             httpGet:
               path: /startup
               port: 80
-            initialDelaySeconds: 5  # Wait 5 sec before first check
-            periodSeconds: 10        # Check every 10 sec
-            failureThreshold: 3      # Fail after 3 failed attempts
+            initialDelaySeconds: 5    # Wait 5 sec before first check
+            periodSeconds: 10         # Check every 10 sec
+            failureThreshold: 3       # Fail after 3 failed attempts
 
-          # 🟡 **Readiness Probe: Ensures the app is ready for traffic**
+          # Readiness Probe: Ensures the app is ready for traffic
           readinessProbe:
             httpGet:
               path: /readyz
               port: 80
-            initialDelaySeconds: 12  # Wait 5 sec before first check
-            periodSeconds: 5        # Check every 5 sec
-            failureThreshold: 2      # Fail if 2 consecutive failures
+            initialDelaySeconds: 12   # Wait 5 sec before first check
+            periodSeconds: 5          # Check every 5 sec
+            failureThreshold: 2       # Fail if 2 consecutive failures
 
-          # 🔴 **Liveness Probe: Ensures the app is still running**
+          # Liveness Probe: Ensures the app is still running
           livenessProbe:
             httpGet:
               path: /healthz
               port: 80
-            initialDelaySeconds: 3  # Wait 3 sec before first check
-            periodSeconds: 5        # Check every 5 sec
-            failureThreshold: 2      # Restart pod after 2 failed attempts
+            initialDelaySeconds: 3    # Wait 3 sec before first check
+            periodSeconds: 5          # Check every 5 sec
+            failureThreshold: 2       # Restart pod after 2 failed attempts
