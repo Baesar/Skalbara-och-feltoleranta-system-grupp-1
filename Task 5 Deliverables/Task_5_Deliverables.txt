@@ -1,0 +1,13 @@
+# Here are the names of the services and .yaml files that were asked for in Task 5
+
+* Probing & Logging: 
+api-gateway
+
+* .yaml file for probing: 
+api-gateway-deploymeny.yaml
+
+* .yaml file for HPA: 
+hpa-user-service.yaml
+
+* .yaml file for defined requests and limits: 
+user-service-deployment.yaml
